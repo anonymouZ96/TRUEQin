@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.nuevasprofesiones.dam2.pi.trueqin.controlador.ActivityInstrucciones">
+    <item
+        android:id="@+id/menuMisDatos"
+        android:orderInCategory="100"
+        android:title="Editar mis datos"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menuSalir"
+        android:orderInCategory="100"
+        android:title="Salir"
+        app:showAsAction="never" />
+</menu>

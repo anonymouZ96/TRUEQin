@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/listaCatItem"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/numCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:fontFamily="@font/comfortaa"
+        android:textColor="#D3D3D3"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+    <TextView
+        android:id="@+id/conCat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:textColor="#D3D3D3"
+        android:fontFamily="@font/comfortaa"
+        android:textAppearance="?attr/textAppearanceListItem" />
+</LinearLayout>

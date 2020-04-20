@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nuevasprofesiones.dam2.pi.trueqin">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".controlador.perfil.EdMisDatos" />
+        <activity
+            android:name=".controlador.perfil.trueques.ActivityTrueques"
+            android:label="@string/title_activity_trueques"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".controlador.general.AnuncioActivity" />
+        <activity android:name=".controlador.general.ListaAnuncios" />
+        <activity android:name=".controlador.perfil.AnuncioEditar" />
+        <activity android:name=".controlador.perfil.NuevoAnuncio" />
+        <activity android:name=".controlador.RegistroUsuario" />
+        <activity
+            android:name=".controlador.ActivityInstrucciones"
+            android:label="@string/title_activity_instrucciones"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controlador.MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
