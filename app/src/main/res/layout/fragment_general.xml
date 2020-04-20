@@ -47,7 +47,7 @@
         android:id="@+id/edTxtNomAnunc"
         android:layout_width="175dp"
         android:layout_height="48dp"
-        android:inputType="textPersonName"
+        android:inputType="textShortMessage"
         android:maxLength="30"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

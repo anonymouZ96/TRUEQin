@@ -27,6 +27,7 @@ public class EdMisDatos extends AppCompatActivity {
 
         sqlThreadGetDatos = new SqlThreadGetDatos();
         try {
+            sqlThreadGetDatos.setId(Sesion.getId());
             sqlThreadGetDatos.start();
             sqlThreadGetDatos.join();
             if (sqlThreadGetDatos.getExito()) {
@@ -54,7 +55,6 @@ public class EdMisDatos extends AppCompatActivity {
         TextView edEmail, txtErrorEmail, edTelef, txtErrorTel, edContrasOld, edContras1, edContras2, txtErrorContras;
         String email, telef, contras1, contras2, contrasOld;
         SqlThreadSetDatos sqlThreadSetDatos;
-
         try {
             edEmail = findViewById(R.id.edEmailPerfil);
             txtErrorEmail = findViewById(R.id.txtErrorEmailPerfil);
@@ -95,19 +95,19 @@ public class EdMisDatos extends AppCompatActivity {
                 }
                 if (!Sesion.getResultados()[3]) {
                     exito = false;
-                    txtErrorEmail.setText("Este teléfono no es válido");
+                    txtErrorTel.setText("Este teléfono no es válido");
                 }
                 if (!Sesion.getResultados()[4]) {
                     exito = false;
-                    txtErrorEmail.setText("Esta contraseña no es válida");
+                    txtErrorContras.setText("Esta contraseña no es válida");
                 }
                 if (!Sesion.getResultados()[5]) {
                     exito = false;
-                    txtErrorEmail.setText("Las contraseñas no coinciden");
+                    txtErrorContras.setText("Las contraseñas no coinciden");
                 }
                 if (!Sesion.getResultados()[6]) {
                     exito = false;
-                    txtErrorEmail.setText("La contraseña antigua no es correcta");
+                    txtErrorContras.setText("La contraseña antigua no es correcta");
                 }
                 if (exito) {
                     finish();
@@ -136,49 +136,55 @@ public class EdMisDatos extends AppCompatActivity {
         dialog.show();
     }
 
-    class SqlThreadGetDatos extends Thread {
-        private String[] datosUser;
-        private boolean exito;
+}
 
-        public void run() {
-            try {
-                this.exito = false;
-                this.datosUser = Sesion.getModelo().obtieneDatosUsuarios(Sesion.getId());
-                this.exito = true;
-            } catch (SQLException sqle) {
-                System.err.println(sqle.getMessage());
-            } catch (IOException ioe) {
-                System.err.println(ioe.getMessage());
-            } catch (ClassNotFoundException cnfe) {
-                System.err.println(cnfe.getMessage());
-            }
-        }
+class SqlThreadGetDatos extends Thread {
+    private String[] datosUser;
+    private int idUs;
+    private boolean exito;
 
-        public String[] getDatosUser() {
-            return this.datosUser;
-        }
-
-        public boolean getExito() {
-            return this.exito;
+    public void run() {
+        try {
+            this.exito = false;
+            this.datosUser = Sesion.getModelo().obtieneDatosUsuarios(idUs);
+            this.exito = true;
+        } catch (SQLException sqle) {
+            System.err.println(sqle.getMessage());
+        } catch (IOException ioe) {
+            System.err.println(ioe.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            System.err.println(cnfe.getMessage());
         }
     }
 
-    class SqlThreadSetDatos extends Thread {
-        private String[] datosUser;
-
-        SqlThreadSetDatos(String[] datosUser) {
-            this.datosUser = datosUser;
-        }
-
-        public void run() {
-            try {
-                Sesion.getModelo().editarMisDatos(this.datosUser);
-            } catch (IOException ioe) {
-                System.err.println(ioe.getMessage());
-            } catch (ClassNotFoundException cnfe) {
-                System.err.println(cnfe.getMessage());
-            }
-        }
-
+    public void setId(int idUs) {
+        this.idUs = idUs;
     }
+
+    public String[] getDatosUser() {
+        return this.datosUser;
+    }
+
+    public boolean getExito() {
+        return this.exito;
+    }
+}
+
+class SqlThreadSetDatos extends Thread {
+    private String[] datosUser;
+
+    SqlThreadSetDatos(String[] datosUser) {
+        this.datosUser = datosUser;
+    }
+
+    public void run() {
+        try {
+            Sesion.getModelo().editarMisDatos(this.datosUser);
+        } catch (IOException ioe) {
+            System.err.println(ioe.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            System.err.println(cnfe.getMessage());
+        }
+    }
+
 }

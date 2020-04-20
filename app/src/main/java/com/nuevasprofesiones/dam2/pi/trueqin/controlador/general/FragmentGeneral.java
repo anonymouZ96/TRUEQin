@@ -98,6 +98,7 @@ public class FragmentGeneral extends Fragment {
                     intent = new Intent(getContext(), ListaAnuncios.class);
                     intent.putExtra("operac", (byte) 2);
                     intent.putExtra("listaDeAnuncios", sqlThreadBuscaAnuncios.getElementos());
+                    intent.putExtra("cadBusq", nomBusq);
                     startActivity(intent);
                 }
             } else {

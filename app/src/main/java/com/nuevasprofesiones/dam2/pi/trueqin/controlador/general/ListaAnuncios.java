@@ -17,7 +17,6 @@ import com.nuevasprofesiones.dam2.pi.trueqin.modelo.utils.Anuncio;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class ListaAnuncios extends AppCompatActivity {
 
@@ -26,8 +25,13 @@ public class ListaAnuncios extends AppCompatActivity {
         TextView txtNomCat;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_anuncios);
-        txtNomCat = findViewById(R.id.txtNomCateg);
-        txtNomCat.setText(txtNomCat.getText().toString().concat(" ").concat(Sesion.getModelo().getCategorias()[getIntent().getByteExtra("idCategoria", (byte) -1) - 1]));
+        if(getIntent().getByteExtra("operac", (byte) -1) == 1) {
+            txtNomCat = findViewById(R.id.txtNomCateg);
+            txtNomCat.setText(txtNomCat.getText().toString().concat(" ").concat(Sesion.getModelo().getCategorias()[getIntent().getByteExtra("idCategoria", (byte) -1) - 1]));
+        } else {
+            txtNomCat = findViewById(R.id.txtNomCateg);
+            txtNomCat.setText(txtNomCat.getText().toString().concat(" '").concat(getIntent().getStringExtra("cadBusq")).concat("'"));
+        }
         operacionesLista();
     }
 

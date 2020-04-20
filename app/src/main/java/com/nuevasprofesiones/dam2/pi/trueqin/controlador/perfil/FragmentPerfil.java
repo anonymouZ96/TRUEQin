@@ -24,7 +24,6 @@ import com.nuevasprofesiones.dam2.pi.trueqin.modelo.utils.Anuncio;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class FragmentPerfil extends Fragment {
     private static final String ARG_PARAM1 = "param1";

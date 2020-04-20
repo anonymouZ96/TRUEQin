@@ -18,7 +18,7 @@ import com.nuevasprofesiones.dam2.pi.trueqin.modelo.utils.Anuncio;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.util.GregorianCalendar;
 
 public class AnuncioActivity extends AppCompatActivity {
 
@@ -45,16 +45,14 @@ public class AnuncioActivity extends AppCompatActivity {
 
     private void operacAnunucio() {
         Anuncio anuncio;
-        TextView txtTitulo, txtDesc, txtUbic, txtPuntos, txtNombre, txtContacto;
-        SqlThreadRellanaAnuncio sqlThreadRellanaAnuncio;
+        TextView txtTitulo, txtDesc, txtUbic, txtPuntos;
+        final SqlThreadRellanaAnuncio sqlThreadRellanaAnuncio;
         try {
             final Intent i;
             txtTitulo = findViewById(R.id.txtTituloAnunc);
             txtDesc = findViewById(R.id.txtDescAnunc);
             txtUbic = findViewById(R.id.txtUbicAnunc);
             txtPuntos = findViewById(R.id.txtPuntosAnunc);
-            txtNombre = findViewById(R.id.txtNomAnunc);
-            txtContacto = findViewById(R.id.txtContAnunc);
             i = getIntent();
             sqlThreadRellanaAnuncio = new SqlThreadRellanaAnuncio();
             sqlThreadRellanaAnuncio.start();
@@ -65,8 +63,6 @@ public class AnuncioActivity extends AppCompatActivity {
                 txtDesc.setText(txtDesc.getText().toString().concat(anuncio.getDescrip()));
                 txtUbic.setText(txtUbic.getText().toString().concat(anuncio.getUbicacion()));
                 txtPuntos.setText(txtPuntos.getText().toString().concat(anuncio.getPuntos()));
-                txtNombre.setText(txtNombre.getText().toString().concat(sqlThreadRellanaAnuncio.getNom()));
-                txtContacto.setText(txtContacto.getText().toString().concat("\tE-mail: ").concat(sqlThreadRellanaAnuncio.getEmail()).concat("\n\tTeléfono: ").concat(sqlThreadRellanaAnuncio.getTel()));
                 if (i.getByteExtra("oper", (byte) -1) == 1) {
                     txtTitulo.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -115,6 +111,7 @@ public class AnuncioActivity extends AppCompatActivity {
                 } else {
                     if (i.getByteExtra("oper", (byte) -1) == 2) {
                         ImageButton btnTrueq;
+                        Button btnInfoAutor;
                         btnTrueq = findViewById(R.id.butTrueqAnunc);
                         btnTrueq.setVisibility(View.VISIBLE);
                         btnTrueq.setOnClickListener(new View.OnClickListener() {
@@ -146,6 +143,17 @@ public class AnuncioActivity extends AppCompatActivity {
                                 }
                             }
                         });
+                        btnInfoAutor = findViewById(R.id.btnInfoAutor);
+                        btnInfoAutor.setVisibility(View.VISIBLE);
+                        btnInfoAutor.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                creaDialogosInfoAutor(sqlThreadRellanaAnuncio.getNom(),
+                                        sqlThreadRellanaAnuncio.getEmail(),
+                                        sqlThreadRellanaAnuncio.getTel(),
+                                        sqlThreadRellanaAnuncio.getEdad());
+                            }
+                        });
                     }
                 }
             } else {
@@ -155,6 +163,22 @@ public class AnuncioActivity extends AppCompatActivity {
             System.err.println(ie.getMessage());
             creaDialogosError("Se ha producido un error");
         }
+    }
+
+    private void creaDialogosInfoAutor(String nom, String email, int tel, byte edad) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(
+                        nom.concat("\n")
+                                .concat(email).concat("\n")
+                                .concat(Integer.toString(tel)).concat("\n")
+                                .concat(Byte.toString(edad)).concat(" años")
+                ).setTitle("Info sobre el vendedor");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
     }
 
 
@@ -171,9 +195,10 @@ public class AnuncioActivity extends AppCompatActivity {
 
     class SqlThreadRellanaAnuncio extends Thread {
         private Anuncio anuncio;
-        private String nom, email, tel;
+        private int tel;
+        private String nom, email, edad;
         private String[] datos;
-        int idAnunc;
+        private int idAnunc;
         private boolean exito;
 
         public void run() {
@@ -184,7 +209,8 @@ public class AnuncioActivity extends AppCompatActivity {
             datos = Sesion.getModelo().obtieneAutorAnuncio(idAnunc);
             nom = datos[1];
             email = datos[2];
-            tel = datos[3];
+            tel = Integer.parseInt(datos[3]);
+            edad = datos[4];
             exito = true;
         }
 
@@ -200,8 +226,23 @@ public class AnuncioActivity extends AppCompatActivity {
             return email;
         }
 
-        public String getTel() {
+        public int getTel() {
             return tel;
+        }
+
+        public byte getEdad() {
+            return calculaEdad();
+        }
+
+        private byte calculaEdad() {
+            byte edad, dia, mes;
+            short anio;
+            final long MILISANIO = (long) 31536000000.0;
+            dia = Byte.parseByte(this.edad.substring(this.edad.lastIndexOf("-") + 1));
+            mes = Byte.parseByte(this.edad.substring(this.edad.indexOf("-") + 1, this.edad.lastIndexOf("-")));
+            anio = Short.parseShort(this.edad.substring(0, this.edad.indexOf("-")));
+            edad = (byte) ((new GregorianCalendar().getTimeInMillis() - new GregorianCalendar(anio, mes - 1, dia).getTimeInMillis()) / MILISANIO);
+            return edad;
         }
 
         public boolean getExito() {
