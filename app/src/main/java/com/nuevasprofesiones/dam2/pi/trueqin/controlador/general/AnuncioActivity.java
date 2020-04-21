@@ -45,7 +45,7 @@ public class AnuncioActivity extends AppCompatActivity {
 
     private void operacAnunucio() {
         Anuncio anuncio;
-        TextView txtTitulo, txtDesc, txtUbic, txtPuntos;
+        TextView txtTitulo, txtDesc, txtUbic, txtPuntos, txtCat;
         final SqlThreadRellanaAnuncio sqlThreadRellanaAnuncio;
         try {
             final Intent i;
@@ -53,6 +53,7 @@ public class AnuncioActivity extends AppCompatActivity {
             txtDesc = findViewById(R.id.txtDescAnunc);
             txtUbic = findViewById(R.id.txtUbicAnunc);
             txtPuntos = findViewById(R.id.txtPuntosAnunc);
+            txtCat = findViewById(R.id.txtCategAnunc);
             i = getIntent();
             sqlThreadRellanaAnuncio = new SqlThreadRellanaAnuncio();
             sqlThreadRellanaAnuncio.start();
@@ -61,8 +62,9 @@ public class AnuncioActivity extends AppCompatActivity {
                 anuncio = sqlThreadRellanaAnuncio.getAnuncio();
                 txtTitulo.setText(anuncio.getTitulo());
                 txtDesc.setText(txtDesc.getText().toString().concat(anuncio.getDescrip()));
-                txtUbic.setText(txtUbic.getText().toString().concat(anuncio.getUbicacion()));
+                txtUbic.setText(anuncio.getUbicacion());
                 txtPuntos.setText(txtPuntos.getText().toString().concat(anuncio.getPuntos()));
+                txtCat.setText(txtCat.getText().toString().concat(Sesion.getModelo().getCategorias()[anuncio.getCategoria() - 1]));
                 if (i.getByteExtra("oper", (byte) -1) == 1) {
                     txtTitulo.setOnClickListener(new View.OnClickListener() {
                         @Override

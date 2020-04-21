@@ -49,7 +49,6 @@ public class ListaAnuncios extends AppCompatActivity {
                 if (elementos.length > 0) {
                     listaAnunc = findViewById(R.id.listaAnuncioAct);
                     ArrayAdapter<Anuncio> adaptadorLista = null;
-//                    adaptadorLista = new ArrayAdapter<Anuncio>(this, android.R.layout.simple_list_item_1, elementos);
                     adaptadorLista = new ArrayAdapter<Anuncio>(this, R.layout.row, elementos);
                     listaAnunc.setAdapter(adaptadorLista);
                     listaAnunc.setOnItemClickListener(new AdapterView.OnItemClickListener() {

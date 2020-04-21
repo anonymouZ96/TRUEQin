@@ -23,6 +23,7 @@
             android:layout_alignParentEnd="false"
             android:layout_alignParentBottom="false"
             android:layout_weight="6"
+            android:fontFamily="@font/comfortaa"
             android:padding="15dp"
             android:paddingStart="35dp"
             android:paddingTop="15dp"
@@ -39,6 +40,7 @@
             android:layout_weight="1"
             android:drawableStart="@drawable/check"
             android:focusable="false"
+            android:fontFamily="@font/comfortaa"
             android:gravity="center"
             android:textAlignment="center" />
 
@@ -46,6 +48,7 @@
             android:id="@+id/txtInfoConfirmacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa"
             android:visibility="invisible" />
 
         <Button
@@ -56,6 +59,7 @@
             android:layout_weight="1"
             android:drawableStart="@drawable/cancel"
             android:focusable="false"
+            android:fontFamily="@font/comfortaa"
             android:gravity="center"
             android:textAlignment="center" />
 
