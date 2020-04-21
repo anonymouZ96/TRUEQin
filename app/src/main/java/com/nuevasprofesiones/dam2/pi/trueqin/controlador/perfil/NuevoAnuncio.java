@@ -3,7 +3,9 @@ package com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.nuevasprofesiones.dam2.pi.trueqin.R;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.utils.Anuncio;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
@@ -21,18 +24,21 @@ import java.io.IOException;
 
 public class NuevoAnuncio extends AppCompatActivity {
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Spinner spinCateg;
         setContentView(R.layout.activity_nuevo_anuncio);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Sesion.getModelo().getCategorias());
         spinCateg = (Spinner) findViewById(R.id.spinCat);
         spinCateg.setAdapter(adapter);
     }
 
     public void clickOfrecer(View v) {
-        TextView txtTitulo, txtDescripcion, txtPuntos, txtUbicacion, txtErrorTit, txtErrorDes, txtErrorPuntos, txtErrorUbic;
+        TextView txtTitulo, txtDescripcion, txtUbicacion, txtPuntos;
+        TextInputLayout txtInputTituloNew, txtInputDescNew, txtInputUbicNew, txtInputPuntosNew;
         String titulo, desc, puntos, ubic;
         Spinner spinCat;
         boolean exito;
@@ -42,14 +48,17 @@ public class NuevoAnuncio extends AppCompatActivity {
         txtPuntos = findViewById(R.id.edPuntosNew);
         txtUbicacion = findViewById(R.id.edUbicacionNew);
         spinCat = findViewById(R.id.spinCat);
-        txtErrorTit = findViewById(R.id.txtErrorNomNew);
-        txtErrorDes = findViewById(R.id.txtErrorDesNew);
-        txtErrorPuntos = findViewById(R.id.txtErrorPuntosNew);
-        txtErrorUbic = findViewById(R.id.txtErrorUbiNew);
-        txtErrorTit.setText("");
-        txtErrorDes.setText("");
-        txtErrorPuntos.setText("");
-        txtErrorUbic.setText("");
+
+        txtInputTituloNew = findViewById(R.id.txtInputTituloNew);
+        txtInputDescNew = findViewById(R.id.txtInputDescNew);
+        txtInputUbicNew = findViewById(R.id.txtInputUbicacioNew);
+        txtInputPuntosNew = findViewById(R.id.txtInputPuntosNew);
+
+        txtInputTituloNew.setErrorEnabled(false);
+        txtInputDescNew.setErrorEnabled(false);
+        txtInputUbicNew.setErrorEnabled(false);
+        txtInputPuntosNew.setErrorEnabled(false);
+
         try {
             titulo = txtTitulo.getText().toString().trim();
             desc = txtDescripcion.getText().toString().trim();
@@ -72,22 +81,26 @@ public class NuevoAnuncio extends AppCompatActivity {
                 exito = true;
                 if (!Sesion.getResultados()[i]) {
                     exito = false;
-                    txtErrorTit.setText("Título no válido.");
+                    txtInputTituloNew.setErrorEnabled(true);
+                    txtInputTituloNew.setError("Título no válido");
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
                     exito = false;
-                    txtErrorDes.setText("Descripción no válida.");
+                    txtInputDescNew.setErrorEnabled(true);
+                    txtInputDescNew.setError("Descripción no válida");
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
                     exito = false;
-                    txtErrorUbic.setText("Ubicación no válida.");
+                    txtInputUbicNew.setErrorEnabled(true);
+                    txtInputUbicNew.setError("Ubicación no válida");
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
                     exito = false;
-                    txtErrorPuntos.setText("Puntos no válidos");
+                    txtInputPuntosNew.setErrorEnabled(true);
+                    txtInputPuntosNew.setError("Puntos no válidos");
                 }
                 if (exito) {
                     h.sendEmptyMessage(1);

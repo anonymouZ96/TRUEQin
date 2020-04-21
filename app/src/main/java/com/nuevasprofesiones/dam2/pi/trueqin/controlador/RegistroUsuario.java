@@ -3,12 +3,15 @@ package com.nuevasprofesiones.dam2.pi.trueqin.controlador;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.nuevasprofesiones.dam2.pi.trueqin.R;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.utils.Usuario;
@@ -17,37 +20,41 @@ import java.io.IOException;
 
 public class RegistroUsuario extends AppCompatActivity {
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_usuario);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     public void clickRegistrar(View view) {
         SqlThreadReg sqlThreadReg;
-        TextView txtNom, txtApes, txtEmail, txtTelef, txtFecha, txtContras1, txtContras2, txtErrorNom, txtErrorApes, txtErrorEmail, txtErrorTel, txtErrorFecha, txtErrorContras;
+        TextView txtNom, txtApes, txtEmail, txtTelef, txtFecha, txtContras1, txtContras2;
+        TextInputLayout txtInputNomReg, txtInputApesReg, txtInputEmailReg, txtInputFechaReg, txtInputTelReg, txtInputPas1Reg;
         String nombre, apes, email, telef, fecha, contras1, contras2;
         Intent intent;
         byte i;
+        txtInputNomReg = findViewById(R.id.txtInputNomReg);
+        txtInputApesReg = findViewById(R.id.txtInputApesReg);
+        txtInputEmailReg = findViewById(R.id.txtInputEmailReg);
+        txtInputFechaReg = findViewById(R.id.txtInputFechaReg);
+        txtInputTelReg = findViewById(R.id.txtInputTelefReg);
+        txtInputPas1Reg = findViewById(R.id.txtInputContras1Reg);
         txtNom = findViewById(R.id.edNomReg);
         txtApes = findViewById(R.id.edApesReg);
         txtEmail = findViewById(R.id.edEmailReg);
         txtTelef = findViewById(R.id.edTelefReg);
-        txtFecha = findViewById(R.id.edFechaNac);
-        txtContras1 = findViewById(R.id.edPas1);
-        txtContras2 = findViewById(R.id.edPas2);
-        txtErrorNom = findViewById(R.id.txtErrorNomReg);
-        txtErrorApes = findViewById(R.id.txtErrorApesReg);
-        txtErrorEmail = findViewById(R.id.txtErrorEmailReg);
-        txtErrorTel = findViewById(R.id.txtErrorTel);
-        txtErrorFecha = findViewById(R.id.txtErrorFecNacReg);
-        txtErrorContras = findViewById(R.id.txtErrorPass1Reg);
-        txtErrorNom.setText("");
-        txtErrorApes.setText("");
-        txtErrorEmail.setText("");
-        txtErrorTel.setText("");
-        txtErrorFecha.setText("");
-        txtErrorContras.setText("");
+        txtFecha = findViewById(R.id.edFechaNacReg);
+        txtContras1 = findViewById(R.id.edPas1Reg);
+        txtContras2 = findViewById(R.id.edPas2Reg);
+
+        txtInputNomReg.setErrorEnabled(false);
+        txtInputApesReg.setErrorEnabled(false);
+        txtInputEmailReg.setErrorEnabled(false);
+        txtInputFechaReg.setErrorEnabled(false);
+        txtInputTelReg.setErrorEnabled(false);
+        txtInputPas1Reg.setErrorEnabled(false);
 
         nombre = txtNom.getText().toString().trim();
         apes = txtApes.getText().toString().trim();
@@ -71,35 +78,43 @@ public class RegistroUsuario extends AppCompatActivity {
             if (Sesion.getResultados()[i]) {
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtErrorEmail.setText("E-mail no válido.");
+                    txtInputEmailReg.setError("E-mail no válido");
+                    txtInputEmailReg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtErrorEmail.setText("Este E-mail ya está registrado.");
+                    txtInputEmailReg.setError("Este E-mail ya está registrado");
+                    txtInputEmailReg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtErrorContras.setText("Contraseña no válida, debe contener números y letras.");
+                    txtInputPas1Reg.setError("Contraseña no válida, debe contener números y letras");
+                    txtInputPas1Reg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtErrorContras.setText("Las contraseñas no coinciden.");
+                    txtInputPas1Reg.setError("Las contraseñas no coinciden");
+                    txtInputPas1Reg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtErrorNom.setText("Nombre no válido.");
+                    txtInputNomReg.setError("Nombre no válido");
+                    txtInputNomReg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtErrorApes.setText("Apellidos no válidos.");
+                    txtInputApesReg.setError("Apellidos no válidos");
+                    txtInputApesReg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtErrorTel.setText("Teléfono no válido");
+                    txtInputTelReg.setError("Teléfono no válido");
+                    txtInputTelReg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtErrorFecha.setText("Fecha no válida.");
+                    txtInputFechaReg.setError("Fecha no válida.");
+                    txtInputFechaReg.setErrorEnabled(true);
                 }
 
                 if (Sesion.getId() > 0) {

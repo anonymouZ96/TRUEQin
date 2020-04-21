@@ -3,8 +3,10 @@ package com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import java.io.IOException;
 
 public class AnuncioEditar extends AppCompatActivity {
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent i;
@@ -24,6 +27,7 @@ public class AnuncioEditar extends AppCompatActivity {
         TextView txtTit;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anuncio_editar);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         txtTit = findViewById(R.id.txtNuevoCont);
         i = getIntent();
         op = i.getByteExtra("operac", (byte) -1);

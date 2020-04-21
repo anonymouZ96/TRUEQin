@@ -1,5 +1,7 @@
 package com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil.trueques;
 
+import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -15,10 +17,12 @@ public class ActivityTrueques extends AppCompatActivity implements ExpListViewAd
 
     private SectionsPagerAdapter sectionsPagerAdapter;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trueques);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);

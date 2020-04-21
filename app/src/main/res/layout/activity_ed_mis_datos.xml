@@ -7,93 +7,19 @@
     android:background="#222222"
     tools:context=".controlador.perfil.EdMisDatos">
 
-    <EditText
-        android:id="@+id/edEmailPerfil"
-        android:layout_width="320dp"
+    <TextView
+        android:id="@+id/txtInfoEdDatos"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:fontFamily="@font/comfortaa"
-        android:inputType="textEmailAddress"
-        android:maxLength="60"
+        android:text="Rellena los campos que deseas modificar"
         android:textColor="#E3E3E3"
-        android:textColorHint="#E3E3E3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.227" />
-
-    <EditText
-        android:id="@+id/edPasOldPerfil"
-        android:layout_width="320dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:fontFamily="@font/comfortaa"
-        android:hint="Introduzca la antigua contraseña"
-        android:inputType="textPassword"
-        android:maxLength="30"
-        android:textColor="#E3E3E3"
-        android:textColorHint="#B1B1B1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.601" />
-
-    <EditText
-        android:id="@+id/edTelefPerfil"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/comfortaa"
-        android:inputType="number"
-        android:maxLength="9"
-        android:textColor="#E3E3E3"
-        android:textColorHint="#E3E3E3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.374" />
-
-    <EditText
-        android:id="@+id/edPas2Perfil"
-        android:layout_width="320dp"
-        android:layout_height="47dp"
-        android:ems="10"
-        android:fontFamily="@font/comfortaa"
-        android:hint="Introduce otra vez tu nueva contraseña"
-        android:inputType="textPassword"
-        android:maxLength="30"
-        android:textColor="#E3E3E3"
-        android:textColorHint="#B1B1B1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79" />
-
-    <EditText
-        android:id="@+id/edPas1Perfil"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/comfortaa"
-        android:hint="Introduzca la nueva contraseña"
-        android:inputType="textPassword"
-        android:maxLength="30"
-        android:textColor="#E3E3E3"
-        android:textColorHint="#B1B1B1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.693" />
+        app:layout_constraintVertical_bias="0.036" />
 
     <TextView
         android:id="@+id/txtNombrePerfil"
@@ -123,33 +49,55 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.157" />
 
-    <TextView
-        android:id="@+id/txtErrorEmailPerfil"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputEmailPerfil"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/comfortaa"
-        android:textAlignment="viewEnd"
-        android:textColor="#E3E3E3"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#E3E3E3"
+        app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
+        app:layout_constraintVertical_bias="0.22000003">
 
-    <TextView
-        android:id="@+id/txtErrorTel"
-        android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edEmailPerfil"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa"
+            android:maxLength="60"
+            android:textColor="#E3E3E3"
+            android:textColorHighlight="#7C4DFF"
+            android:textColorHint="#959595"
+            android:textColorLink="#7C4DFF" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputTelefPerfil"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/comfortaa"
-        android:textAlignment="viewEnd"
-        android:textColor="#E3E3E3"
+        android:textColorHint="#E3E3E3"
+        app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446" />
+        app:layout_constraintVertical_bias="0.35000002">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edTelefPerfil"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa"
+            android:inputType="number"
+            android:maxLength="9"
+            android:textColor="#E3E3E3"
+            android:textColorHighlight="#7C4DFF"
+            android:textColorHint="#959595"
+            android:textColorLink="#7C4DFF" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/txtContrasPerfil"
@@ -164,26 +112,92 @@
         app:layout_constraintHorizontal_bias="0.193"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.515" />
+        app:layout_constraintVertical_bias="0.48000002" />
 
-    <TextView
-        android:id="@+id/txtErrorPass1"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputContrasOldPerfil"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/comfortaa"
-        android:textAlignment="viewEnd"
-        android:textColor="#E3E3E3"
+        android:textColorHint="#959595"
+        app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.858" />
+        app:layout_constraintVertical_bias="0.58000004">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPasOldPerfil"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa"
+            android:hint="Introduzca la antigua contraseña"
+            android:inputType="textPassword"
+            android:maxLength="30"
+            android:textColor="#E3E3E3"
+            android:textColorHighlight="#7C4DFF"
+            android:textColorHint="#959595"
+            android:textColorLink="#7C4DFF" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputContras1Perfil"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="#959595"
+        app:errorEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPas1Perfil"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa"
+            android:hint="Introduzca la nueva contraseña"
+            android:inputType="textPassword"
+            android:maxLength="30"
+            android:textColor="#E3E3E3"
+            android:textColorHighlight="#7C4DFF"
+            android:textColorHint="#959595"
+            android:textColorLink="#7C4DFF" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputContras2Perfil"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="#959595"
+        app:errorEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.86">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPas2Perfil"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa"
+            android:hint="Repite la contraseña"
+            android:inputType="textPassword"
+            android:maxLength="30"
+            android:textColor="#E3E3E3"
+            android:textColorHighlight="#7C4DFF"
+            android:textColorHint="#959595"
+            android:textColorLink="#7C4DFF" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnConfirmarEdPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/bordes_redondeados_cel"
         android:fontFamily="@font/comfortaa"
         android:onClick="operacEdDatosPerfil"
         android:text="Confirmar"
@@ -194,19 +208,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.96" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/comfortaa"
-        android:text="Rellena los campos que deseas modificar"
-        android:textColor="#E3E3E3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

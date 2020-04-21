@@ -3,8 +3,10 @@ package com.nuevasprofesiones.dam2.pi.trueqin.controlador.general;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,11 +22,13 @@ import java.io.IOException;
 
 public class ListaAnuncios extends AppCompatActivity {
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         TextView txtNomCat;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_anuncios);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if(getIntent().getByteExtra("operac", (byte) -1) == 1) {
             txtNomCat = findViewById(R.id.txtNomCateg);
             txtNomCat.setText(txtNomCat.getText().toString().concat(" ").concat(Sesion.getModelo().getCategorias()[getIntent().getByteExtra("idCategoria", (byte) -1) - 1]));

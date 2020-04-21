@@ -1,7 +1,9 @@
 package com.nuevasprofesiones.dam2.pi.trueqin.controlador.general;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.nuevasprofesiones.dam2.pi.trueqin.R;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.utils.Anuncio;
@@ -37,9 +40,11 @@ public class FragmentGeneral extends Fragment {
         return fragment;
     }
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -66,15 +71,16 @@ public class FragmentGeneral extends Fragment {
         boolean exito;
         byte i;
         TextView txtNomBusq, txtUbicacionBusq, txtErrorTit, txtErrorUbi;
+        TextInputLayout txtInputCadBusq, txtInputLocBusq;
         String nomBusq, ubic;
         SqlThreadBuscaAnuncios sqlThreadBuscaAnuncios;
         Intent intent;
-        txtNomBusq = getActivity().findViewById(R.id.edTxtNomAnunc);
+        txtNomBusq = getActivity().findViewById(R.id.edTxtCadBusq);
         txtUbicacionBusq = getActivity().findViewById(R.id.edTxtLoc);
-        txtErrorTit = getView().findViewById(R.id.txtErrorNomBusq);
-        txtErrorUbi = getView().findViewById(R.id.txtErrorUbiBusq);
-        txtErrorTit.setText("");
-        txtErrorUbi.setText("");
+        txtInputCadBusq = getView().findViewById(R.id.txtInputCadBusq);
+        txtInputLocBusq = getView().findViewById(R.id.txtInputLoc);
+        txtInputCadBusq.setErrorEnabled(false);
+        txtInputLocBusq.setErrorEnabled(false);
         try {
             nomBusq = txtNomBusq.getText().toString().trim();
             ubic = txtUbicacionBusq.getText().toString().trim();
@@ -86,12 +92,14 @@ public class FragmentGeneral extends Fragment {
                 exito = true;
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtErrorTit.setText("Cadena de búsqueda no válida.");
+                    txtInputCadBusq.setErrorEnabled(true);
+                    txtInputCadBusq.setError("Cadena de búsqueda no válida");
                     exito = false;
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtErrorUbi.setText("Ubicación no válida.");
+                    txtInputCadBusq.setErrorEnabled(true);
+                    txtInputCadBusq.setError("Ubicación no válida");
                     exito = false;
                 }
                 if (exito) {

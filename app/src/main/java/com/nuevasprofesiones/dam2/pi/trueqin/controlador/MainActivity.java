@@ -3,14 +3,17 @@ package com.nuevasprofesiones.dam2.pi.trueqin.controlador;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.nuevasprofesiones.dam2.pi.trueqin.R;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Modelo;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
@@ -23,20 +26,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
 
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SqlThreadMod sqlThreadMod;
@@ -44,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         TextView edUser, edPass;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         try {
             sqlThreadMod = new SqlThreadMod();
             sqlThreadMod.start();
@@ -158,15 +152,19 @@ public class MainActivity extends AppCompatActivity {
         SqlThreadIniSesion sqlThreadIniSesion;
         Intent intent;
         boolean exito;
-        TextView txtEmail, txtContras, txtErrorEmail, txtErrorPass;
+        TextView txtEmail, txtContras;
+        TextInputLayout txtInputEmail, txtInputContras;
         String email, contras, cad;
+
+        txtInputEmail = findViewById(R.id.txtInputEmail);
+        txtInputContras = findViewById(R.id.txtInputContras);
         txtEmail = findViewById(R.id.edEmail);
         txtContras = findViewById(R.id.edContras);
-        txtErrorEmail = findViewById(R.id.txtErrorEmail);
-        txtErrorPass = findViewById(R.id.txtErrorPass);
         btnIniSes = findViewById(R.id.btnIniSesion);
-        txtErrorEmail.setText("");
-        txtErrorPass.setText("");
+
+        txtInputEmail.setErrorEnabled(false);
+        txtInputContras.setErrorEnabled(false);
+
         try {
             email = txtEmail.getText().toString().trim();
             contras = txtContras.getText().toString().trim();
@@ -178,11 +176,13 @@ public class MainActivity extends AppCompatActivity {
                 if (Sesion.getResultados()[1]) {
                     exito = true;
                     if (!Sesion.getResultados()[2]) {
-                        txtErrorEmail.setText("E-mail no válido.");
+                        txtEmail.setError("E-mail no válido");
+                        txtInputEmail.setErrorEnabled(true);
                         exito = false;
                     }
                     if (!Sesion.getResultados()[3]) {
-                        txtErrorPass.setText("Contraseña no válida.");
+                        txtContras.setError("Contraseña no válida.");
+                        txtInputContras.setErrorEnabled(true);
                         exito = false;
                     }
                     if (exito) {

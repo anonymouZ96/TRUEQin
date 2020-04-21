@@ -3,12 +3,15 @@ package com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.nuevasprofesiones.dam2.pi.trueqin.R;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
 
@@ -17,10 +20,12 @@ import java.sql.SQLException;
 
 public class EdMisDatos extends AppCompatActivity {
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ed_mis_datos);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         TextView txtNomApes, txtFecNac, edEmail, edTelef;
         String[] datosUser;
         SqlThreadGetDatos sqlThreadGetDatos;
@@ -52,23 +57,28 @@ public class EdMisDatos extends AppCompatActivity {
     }
 
     public void operacEdDatosPerfil(View view) {
-        TextView edEmail, txtErrorEmail, edTelef, txtErrorTel, edContrasOld, edContras1, edContras2, txtErrorContras;
+        String[] datos;
+        boolean exito;
+        TextView edEmail, edTelef, edContrasOld, edContras1, edContras2;
+        TextInputLayout txtInputEmailPerfil, txtInputTelefPerfil, txtInputPasOldPerfil, txtInputPas1Perfil;
         String email, telef, contras1, contras2, contrasOld;
         SqlThreadSetDatos sqlThreadSetDatos;
         try {
             edEmail = findViewById(R.id.edEmailPerfil);
-            txtErrorEmail = findViewById(R.id.txtErrorEmailPerfil);
+            txtInputEmailPerfil = findViewById(R.id.txtInputEmailPerfil);
             edTelef = findViewById(R.id.edTelefPerfil);
-            txtErrorTel = findViewById(R.id.txtErrorTel);
+            txtInputTelefPerfil = findViewById(R.id.txtInputTelefPerfil);
             edContrasOld = findViewById(R.id.edPasOldPerfil);
             edContras1 = findViewById(R.id.edPas1Perfil);
             edContras2 = findViewById(R.id.edPas2Perfil);
-            txtErrorContras = findViewById(R.id.txtErrorPass1);
-            txtErrorEmail.setText("");
-            txtErrorTel.setText("");
-            txtErrorContras.setText("");
-            String[] datos;
-            boolean exito;
+            txtInputPasOldPerfil = findViewById(R.id.txtInputContrasOldPerfil);
+            txtInputPas1Perfil = findViewById(R.id.txtInputContras1Perfil);
+
+            txtInputEmailPerfil.setErrorEnabled(false);
+            txtInputTelefPerfil.setErrorEnabled(false);
+            txtInputPasOldPerfil.setErrorEnabled(false);
+            txtInputPas1Perfil.setErrorEnabled(false);
+
             email = edEmail.getText().toString().trim();
             telef = edTelef.getText().toString().trim();
             contras1 = edContras1.getText().toString().trim();
@@ -87,27 +97,33 @@ public class EdMisDatos extends AppCompatActivity {
                 exito = true;
                 if (!Sesion.getResultados()[1]) {
                     exito = false;
-                    txtErrorEmail.setText("E-mail no válido");
+                    txtInputEmailPerfil.setError("E-mail no válido");
+                    txtInputEmailPerfil.setErrorEnabled(true);
                 }
                 if (!Sesion.getResultados()[2]) {
                     exito = false;
-                    txtErrorEmail.setText("Este E-mail ya está registrado");
+                    txtInputEmailPerfil.setError("Este E-mail ya está registrado");
+                    txtInputEmailPerfil.setErrorEnabled(true);
                 }
                 if (!Sesion.getResultados()[3]) {
                     exito = false;
-                    txtErrorTel.setText("Este teléfono no es válido");
+                    txtInputTelefPerfil.setError("Este teléfono no es válido");
+                    txtInputTelefPerfil.setErrorEnabled(true);
                 }
                 if (!Sesion.getResultados()[4]) {
                     exito = false;
-                    txtErrorContras.setText("Esta contraseña no es válida");
+                    txtInputPas1Perfil.setError("Esta contraseña no es válida");
+                    txtInputPas1Perfil.setErrorEnabled(true);
                 }
                 if (!Sesion.getResultados()[5]) {
                     exito = false;
-                    txtErrorContras.setText("Las contraseñas no coinciden");
+                    txtInputPas1Perfil.setError("Las contraseñas no coinciden");
+                    txtInputPas1Perfil.setErrorEnabled(true);
                 }
                 if (!Sesion.getResultados()[6]) {
                     exito = false;
-                    txtErrorContras.setText("La contraseña antigua no es correcta");
+                    txtInputPasOldPerfil.setError("La contraseña antigua no es correcta");
+                    txtInputPasOldPerfil.setErrorEnabled(true);
                 }
                 if (exito) {
                     finish();
