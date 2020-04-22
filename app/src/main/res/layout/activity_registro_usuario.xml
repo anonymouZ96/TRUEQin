@@ -11,14 +11,13 @@
         android:id="@+id/txtInputNomReg"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07999998">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edNomReg"
             android:maxLength="20"
@@ -27,22 +26,20 @@
             android:fontFamily="@font/comfortaa"
             android:hint="Nombre"
             android:inputType="textPersonName"
-            android:textColor="#E3E3E3"
-            android:textColorHint="#F1F1F1" />
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputApesReg"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.19999999">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edApesReg"
             android:layout_width="330dp"
@@ -50,7 +47,8 @@
             android:maxLength="30"
             android:fontFamily="@font/comfortaa"
             android:hint="Apellidos"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -58,35 +56,34 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.32999998">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edEmailReg"
             android:layout_width="330dp"
             android:maxLength="60"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:hint="E-mail" />
+            android:hint="E-mail"
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputFechaReg"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.45999998">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edFechaNacReg"
             android:layout_width="330dp"
@@ -95,46 +92,44 @@
             android:fontFamily="@font/comfortaa"
             android:hint="Fecha de nacimiento (dd/mm/aaaa)"
             android:inputType="date"
-            android:textColor="#E3E3E3"
-            android:textColorHint="#F1F1F1" />
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputTelefReg"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.58000004">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edTelefReg"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
             android:hint="Teléfono"
-            android:inputType="number"
+            android:inputType="phone"
             android:maxLength="9"
-            android:textColor="#E3E3E3"
-            android:textColorHint="#F1F1F1" />
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputContras1Reg"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71000004">
-
+        app:layout_constraintVertical_bias="0.71000004"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#BCBCBC">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edPas1Reg"
             android:layout_width="330dp"
@@ -142,21 +137,23 @@
             android:fontFamily="@font/comfortaa"
             android:hint="Contraseña(+6 caracteres,letras y números)"
             android:inputType="textPassword"
-            android:maxLength="30" />
+            android:maxLength="30"
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputContras2Reg"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84000003">
-
+        app:layout_constraintVertical_bias="0.84000003"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#BCBCBC">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edPas2Reg"
             android:layout_width="330dp"
@@ -164,7 +161,7 @@
             android:fontFamily="@font/comfortaa"
             android:hint="Repite la contraseña"
             android:inputType="textPassword"
-            android:maxLength="30" />
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

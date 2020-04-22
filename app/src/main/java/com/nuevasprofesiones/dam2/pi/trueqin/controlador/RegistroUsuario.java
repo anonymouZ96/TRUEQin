@@ -16,6 +16,10 @@ import com.nuevasprofesiones.dam2.pi.trueqin.R;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.utils.Usuario;
 
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class RegistroUsuario extends AppCompatActivity {
@@ -118,8 +122,9 @@ public class RegistroUsuario extends AppCompatActivity {
                 }
 
                 if (Sesion.getId() > 0) {
-                    intent = new Intent(this, ActivityInstrucciones.class);
-                    startActivity(intent);
+                    creaDialogosGuardar(email, contras1);
+//                    intent = new Intent(this, ActivityInstrucciones.class);
+//                    startActivity(intent);
                 }
             }
         } catch (InterruptedException ie) {
@@ -138,6 +143,56 @@ public class RegistroUsuario extends AppCompatActivity {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private void creaDialogosGuardar(final String email, final String pass) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("¿Desea guardar sus datos de inicio de sesión?").setTitle("Guardar datos");
+        builder.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent;
+                try {
+                    escribeArchivoDatosIni(email, pass);
+                    intent = new Intent(getApplicationContext(), ActivityInstrucciones.class);
+                    startActivity(intent);
+                } catch (FileNotFoundException fnfe) {
+                    System.err.println(fnfe.getMessage());
+                    creaDialogosError();
+                } catch (IOException ioe) {
+                    System.err.println(ioe.getMessage());
+                    creaDialogosError();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent;
+                intent = new Intent(getApplicationContext(), ActivityInstrucciones.class);
+                startActivity(intent);
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private boolean escribeArchivoDatosIni(String user, String pass) throws FileNotFoundException, IOException {
+        FileOutputStream fileOutputStream;
+        StringBuilder stringBuilder;
+        DataOutputStream dataOutputStream;
+        boolean exito;
+        fileOutputStream = new FileOutputStream(new File(getFilesDir().getPath().concat("/inis.dat".replace('/', File.separatorChar))), false);
+        dataOutputStream = new DataOutputStream(fileOutputStream);
+        stringBuilder = new StringBuilder(user);
+        stringBuilder.setLength(60);
+        dataOutputStream.writeChars(stringBuilder.toString());
+        stringBuilder = new StringBuilder(pass);
+        stringBuilder.setLength(30);
+        dataOutputStream.writeChars(stringBuilder.toString());
+        if (dataOutputStream != null) {
+            dataOutputStream.close();
+        }
+        exito = true;
+        return exito;
     }
 
     class SqlThreadReg extends Thread {

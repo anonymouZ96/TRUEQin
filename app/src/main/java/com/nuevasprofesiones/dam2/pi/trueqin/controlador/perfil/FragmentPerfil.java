@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Matrix;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -57,31 +58,39 @@ public class FragmentPerfil extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        SqlThreadObtienePuntos sqlThreadObtienePuntos;
         ListView listaAnunc;
         TextView txtPuntos;
         final SqlThreadLLenaLista sqlThreadLLenaLista;
         try {
             view = inflater.inflate(R.layout.fragment_perfil, container, false);
-            txtPuntos = view.findViewById(R.id.txtPuntosPerfil);
-            txtPuntos.setText(txtPuntos.getText().toString().concat(Integer.toString(Sesion.getPuntos())));
-            sqlThreadLLenaLista = new SqlThreadLLenaLista();
-            sqlThreadLLenaLista.start();
-            sqlThreadLLenaLista.join();
-            if (sqlThreadLLenaLista.getExito()) {
-                listaAnunc = view.findViewById(R.id.listaMisAnuncios);
-                ArrayAdapter<Anuncio> adaptadorLista = null;
-                adaptadorLista = new ArrayAdapter<Anuncio>(view.getContext(), R.layout.row, sqlThreadLLenaLista.getElementos());
-                listaAnunc.setAdapter(adaptadorLista);
-                listaAnunc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent i;
-                        i = new Intent(getContext(), AnuncioActivity.class);
-                        i.putExtra("oper", (byte) 1);
-                        i.putExtra("idAnuncio", sqlThreadLLenaLista.getElementos()[position].getId());
-                        startActivity(i);
-                    }
-                });
+            sqlThreadObtienePuntos = new SqlThreadObtienePuntos();
+            sqlThreadObtienePuntos.start();
+            sqlThreadObtienePuntos.join();
+            if (sqlThreadObtienePuntos.getExito()) {
+                txtPuntos = view.findViewById(R.id.txtPuntosPerfil);
+                txtPuntos.setText(txtPuntos.getText().toString().concat(Integer.toString(Sesion.getPuntos())));
+                sqlThreadLLenaLista = new SqlThreadLLenaLista();
+                sqlThreadLLenaLista.start();
+                sqlThreadLLenaLista.join();
+                if (sqlThreadLLenaLista.getExito()) {
+                    listaAnunc = view.findViewById(R.id.listaMisAnuncios);
+                    ArrayAdapter<Anuncio> adaptadorLista = null;
+                    adaptadorLista = new ArrayAdapter<Anuncio>(view.getContext(), R.layout.row, sqlThreadLLenaLista.getElementos());
+                    listaAnunc.setAdapter(adaptadorLista);
+                    listaAnunc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent i;
+                            i = new Intent(getContext(), AnuncioActivity.class);
+                            i.putExtra("oper", (byte) 1);
+                            i.putExtra("idAnuncio", sqlThreadLLenaLista.getElementos()[position].getId());
+                            startActivity(i);
+                        }
+                    });
+                } else {
+                    creaDialogosError();
+                }
             } else {
                 creaDialogosError();
             }
@@ -107,7 +116,6 @@ public class FragmentPerfil extends Fragment {
                 clickTrueques();
             }
         });
-
         return view;
     }
 
@@ -123,10 +131,27 @@ public class FragmentPerfil extends Fragment {
     }
 
     private void clickRefresh() {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.detach(this);
-        transaction.attach(this);
-        transaction.commit();
+//        TextView txtPuntos;
+//        SqlThreadObtienePuntos sqlThreadObtienePuntos;
+//        try {
+//            sqlThreadObtienePuntos = new SqlThreadObtienePuntos();
+//            sqlThreadObtienePuntos.start();
+//            sqlThreadObtienePuntos.join();
+//            if (sqlThreadObtienePuntos.getExito()) {
+//                txtPuntos = view.findViewById(R.id.txtPuntosPerfil);
+//                txtPuntos.setText(txtPuntos.getText().toString().substring(0, txtPuntos.getText().toString().indexOf("\n") + 1).concat(Integer.toString(Sesion.getPuntos())));
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.detach(this);
+                transaction.attach(this);
+                transaction.commit();
+//            } else {
+//                creaDialogosError();
+//            }
+//        } catch (InterruptedException ie) {
+//            System.err.println(ie.getMessage());
+//            creaDialogosError();
+//        }
     }
 
     private void clickTrueques() {
@@ -134,30 +159,49 @@ public class FragmentPerfil extends Fragment {
         i = new Intent(getContext(), ActivityTrueques.class);
         startActivity(i);
     }
+}
 
-    class SqlThreadLLenaLista extends Thread {
-        private boolean exito;
-        private Anuncio[] elementos;
+class SqlThreadLLenaLista extends Thread {
+    private boolean exito;
+    private Anuncio[] elementos;
 
-        public void run() {
-            try {
-                this.exito = false;
-                elementos = Sesion.getModelo().buscarAnuncios();
-                this.exito = true;
-            } catch (IOException ioe) {
-                System.err.println(ioe.getMessage());
-            } catch (ClassNotFoundException cnfe) {
-                System.err.println(cnfe.getMessage());
-            }
+    public void run() {
+        try {
+            this.exito = false;
+            elementos = Sesion.getModelo().buscarAnuncios();
+            this.exito = true;
+        } catch (IOException ioe) {
+            System.err.println(ioe.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            System.err.println(cnfe.getMessage());
         }
+    }
 
-        public Anuncio[] getElementos() {
-            return this.elementos;
+    public Anuncio[] getElementos() {
+        return this.elementos;
+    }
+
+    public boolean getExito() {
+        return this.exito;
+    }
+
+}
+
+class SqlThreadObtienePuntos extends Thread {
+
+    private boolean exito;
+
+    public void run() {
+        this.exito = false;
+        try {
+            Sesion.getModelo().obtienePuntos();
+            exito = true;
+        } catch (IOException ioe) {
+            System.err.println(ioe.getMessage());
         }
+    }
 
-        public boolean getExito() {
-            return this.exito;
-        }
-
+    public boolean getExito() {
+        return this.exito;
     }
 }

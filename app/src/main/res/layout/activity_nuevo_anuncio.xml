@@ -10,7 +10,7 @@
         android:id="@+id/txtInputTituloNew"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,8 +27,7 @@
             android:hint="Título del anuncio"
             android:inputType="textShortMessage"
             android:maxLength="30"
-            android:textColor="#E3E3E3"
-            android:textColorHint="#E3E3E3" />
+            android:textColor="#E3E3E3"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -36,7 +35,7 @@
         android:id="@+id/txtInputDescNew"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,8 +52,7 @@
             android:hint="Descripción"
             android:inputType="textMultiLine"
             android:maxLength="300"
-            android:textColor="#E3E3E3"
-            android:textColorHint="#E3E3E3" />
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -62,7 +60,7 @@
         android:id="@+id/txtInputUbicacioNew"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +68,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.42000002">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edUbicacionNew"
             android:layout_width="260dp"
@@ -79,15 +76,14 @@
             android:hint="Ubicación"
             android:inputType="textPersonName"
             android:maxLength="30"
-            android:textColor="#E3E3E3"
-            android:textColorHint="#E3E3E3" />
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputPuntosNew"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +91,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.58000004">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edPuntosNew"
             android:layout_width="260dp"
@@ -104,8 +99,7 @@
             android:hint="Puntos"
             android:inputType="number"
             android:maxLength="4"
-            android:textColor="#E3E3E3"
-            android:textColorHint="#F1F1F1" />
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView

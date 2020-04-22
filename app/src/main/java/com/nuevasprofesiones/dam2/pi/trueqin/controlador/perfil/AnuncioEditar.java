@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,15 +34,19 @@ public class AnuncioEditar extends AppCompatActivity {
         op = i.getByteExtra("operac", (byte) -1);
         if (op == 1) {
             txtTit.setText(txtTit.getText().toString().concat("Inserte el nuevo título"));
+            txtTit.setInputType(InputType.TYPE_CLASS_TEXT);
         } else {
             if (op == 2) {
                 txtTit.setText(txtTit.getText().toString().concat("Inserte la nueva descripción"));
+                txtTit.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
             } else {
                 if (op == 3) {
                     txtTit.setText(txtTit.getText().toString().concat("Inserte la nueva ubicación"));
+                    txtTit.setInputType(InputType.TYPE_CLASS_TEXT);
                 } else {
                     if (op == 4) {
                         txtTit.setText(txtTit.getText().toString().concat("Inserte los nuevos puntos necesarios"));
+                        txtTit.setInputType(InputType.TYPE_CLASS_NUMBER);
                     }
                 }
             }

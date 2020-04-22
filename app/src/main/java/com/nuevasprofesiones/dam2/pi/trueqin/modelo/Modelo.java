@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class Modelo {
 
-    final private String SERVER = "192.168.1.42";
+    final private String SERVER = "192.168.1.37";
     //final private String SERVER = "192.168.43.206";
     final private int PUERTO = 6000;
     private Socket clientSocket;
@@ -41,8 +41,14 @@ public class Modelo {
         this.dos = new DataOutputStream(this.clientSocket.getOutputStream());
     }
 
-    public void cierraConexion() throws IOException {
+    public void obtienePuntos() throws IOException {
         this.dos.writeByte(14);
+        this.dos.flush();
+        Sesion.setPuntos(this.dis.readShort());
+    }
+
+    public void cierraConexion() throws IOException {
+        this.dos.writeByte(15);
         this.ois.close();
         this.oos.close();
         this.dos.close();

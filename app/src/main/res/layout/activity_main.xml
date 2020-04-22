@@ -12,13 +12,11 @@
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         app:errorEnabled="false"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.39">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edEmail"
             android:maxLength="60"
@@ -38,16 +36,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56">
-
+        app:layout_constraintVertical_bias="0.56"
+        app:passwordToggleEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edContras"
-            android:maxLength="30"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
             android:fontFamily="@font/comfortaa"
-            android:hint="Introduce tu contraseña" />
+            android:hint="Introduce tu contraseña"
+            android:inputType="textPassword"
+            android:maxLength="30" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

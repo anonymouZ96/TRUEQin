@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                         if (Sesion.getId() > 0) {
                             try {
                                 cad = leeArchivoDatosIni();
-                                if (!email.equals(cad.substring(0, cad.indexOf(";"))) && !contras.equals(cad.substring(cad.indexOf(";") + 1))) {
+                                if (!email.equals(cad.substring(0, cad.indexOf(";"))) || !contras.equals(cad.substring(cad.indexOf(";") + 1))) {
                                     creaDialogosGuardar(email, contras);
                                 } else {
                                     intent = new Intent(this, ActivityInstrucciones.class);

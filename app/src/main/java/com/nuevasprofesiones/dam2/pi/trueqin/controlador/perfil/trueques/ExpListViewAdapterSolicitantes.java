@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.nuevasprofesiones.dam2.pi.trueqin.R;
 import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
 
@@ -100,6 +101,8 @@ public class ExpListViewAdapterSolicitantes extends BaseExpandableListAdapter {
                 txtInfoConf.setVisibility(View.VISIBLE);
                 txtInfoConf.setText("Rechazado");
             } else {
+                btnAcep.setClickable(true);
+                btnRech.setClickable(true);
                 final View finalConvertView = convertView;
                 btnAcep.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -114,13 +117,12 @@ public class ExpListViewAdapterSolicitantes extends BaseExpandableListAdapter {
                                 creaDialogosError(finalConvertView);
                             } else {
                                 Toast.makeText(context, "Aceptado", Toast.LENGTH_SHORT).show();
-                                v.findViewById(R.id.btnAcep).setVisibility(View.INVISIBLE);
+                                FragmentSolicitantes.operacionesLista();
+//                                v.findViewById(R.id.btnAcep).setVisibility(View.INVISIBLE);
 //                                v.findViewById(R.id.btnRech).setVisibility(View.INVISIBLE);
-                                txtInfoConf = v.findViewById(R.id.txtInfoConfirmacion);
-                                txtInfoConf.setVisibility(View.VISIBLE);
-                                txtInfoConf.setText("Aceptado");
-//                                actualizarElem.actualizar();
-//                                listTrueques.
+//                                txtInfoConf = v.findViewById(R.id.txtInfoConfirmacion);
+//                                txtInfoConf.setVisibility(View.VISIBLE);
+//                                txtInfoConf.setText("Aceptado");
                             }
                         } catch (InterruptedException ie) {
                             System.err.println(ie.getMessage());
@@ -141,12 +143,13 @@ public class ExpListViewAdapterSolicitantes extends BaseExpandableListAdapter {
                                 creaDialogosError(finalConvertView);
                             } else {
                                 Toast.makeText(context, "Rechazado", Toast.LENGTH_SHORT).show();
+                                FragmentSolicitantes.operacionesLista();
 //                                v.findViewById(R.id.btnAcep).setVisibility(View.INVISIBLE);
-                                v.findViewById(R.id.btnRech).setVisibility(View.INVISIBLE);
-                                txtInfoConf = v.findViewById(R.id.txtInfoConfirmacion);
-                                txtInfoConf.setVisibility(View.VISIBLE);
-                                txtInfoConf.setText("Rechazado");
-//                                actualizarElem.actualizar();
+                                //v.findViewById(R.id.btnRech).setVisibility(View.INVISIBLE);
+//                                txtInfoConf = v.findViewById(R.id.txtInfoConfirmacion);
+//                                txtInfoConf.setVisibility(View.VISIBLE);
+//                                txtInfoConf.setText("Rechazado");
+                                //actualizarElem.actualizar();
                             }
                         } catch (InterruptedException ie) {
                             System.err.println(ie.getMessage());

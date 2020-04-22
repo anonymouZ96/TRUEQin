@@ -1,14 +1,17 @@
 package com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil.trueques;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
+import android.view.SurfaceControl;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
@@ -31,6 +34,8 @@ public class FragmentSolicitantes extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static Trueque[] vecTruequesSolicitantes;
+    private static View view;
+    private static Context context;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -72,15 +77,42 @@ public class FragmentSolicitantes extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        SqlThreadGetSolic sqlThreadGetSolic;
-        View view;
         view = inflater.inflate(R.layout.fragment_solicitantes, container, false);
+        context = view.getContext();
+        operacionesLista();
+        return view;
+    }
+
+    protected static void operacionesLista() {
+        ExpandableListView expandListView;
+        SqlThreadGetSolic sqlThreadGetSolic;
+        Trueque[] vecTrueques;
+        ExpListViewAdapterSolicitantes adapter;
+        ArrayList<String> listTrueques;
+        ArrayList<String> listSubTrueques;
+        Map<String, ArrayList<String>> mapChild;
+        int i;
         try {
             sqlThreadGetSolic = new SqlThreadGetSolic(false);
             sqlThreadGetSolic.start();
             sqlThreadGetSolic.join();
             if (sqlThreadGetSolic.getExito()) {
-                operacionesLista(view, sqlThreadGetSolic.getVecTrueques());
+                vecTrueques = sqlThreadGetSolic.getVecTrueques();
+                vecTruequesSolicitantes = vecTrueques;
+                expandListView = view.findViewById(R.id.listaSolicitantes);
+                listTrueques = new ArrayList<>();
+                listSubTrueques = new ArrayList<>();
+                mapChild = new HashMap<>();
+                for (i = 0; i <= vecTrueques.length - 1; i++) {
+                    listTrueques.add(vecTrueques[i].getTitulo());
+                    listSubTrueques.add(vecTrueques[i].getNombre());
+                    listSubTrueques.add(vecTrueques[i].getTelefono());
+                    listSubTrueques.add(vecTrueques[i].getEmail());
+                    mapChild.put(listTrueques.get(i), new ArrayList<>(listSubTrueques));
+                    listSubTrueques.clear();
+                }
+                adapter = new ExpListViewAdapterSolicitantes(listTrueques, mapChild, context);
+                expandListView.setAdapter(adapter);
             } else {
                 creaDialogosError();
             }
@@ -88,36 +120,10 @@ public class FragmentSolicitantes extends Fragment {
             System.err.println(ie.getMessage());
             creaDialogosError();
         }
-        return view;
     }
 
-    private void operacionesLista(View view, Trueque[] vecTrueques) {
-        ExpandableListView expandListView;
-        ExpListViewAdapterSolicitantes adapter;
-        ArrayList<String> listTrueques;
-        ArrayList<String> listSubTrueques;
-        Map<String, ArrayList<String>> mapChild;
-        int i;
-        vecTruequesSolicitantes = vecTrueques;
-        expandListView = view.findViewById(R.id.listaSolicitantes);
-        listTrueques = new ArrayList<>();
-        listSubTrueques = new ArrayList<>();
-        mapChild = new HashMap<>();
-
-        for (i = 0; i <= vecTrueques.length - 1; i++) {
-            listTrueques.add(vecTrueques[i].getTitulo());
-            listSubTrueques.add(vecTrueques[i].getNombre());
-            listSubTrueques.add(vecTrueques[i].getTelefono());
-            listSubTrueques.add(vecTrueques[i].getEmail());
-            mapChild.put(listTrueques.get(i), new ArrayList<>(listSubTrueques));
-            listSubTrueques.clear();
-        }
-        adapter = new ExpListViewAdapterSolicitantes(listTrueques, mapChild, getContext());
-        expandListView.setAdapter(adapter);
-    }
-
-    private void creaDialogosError() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+    private static void creaDialogosError() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setMessage("Se ha producido un error").setTitle("ERROR");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {

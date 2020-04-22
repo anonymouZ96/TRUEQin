@@ -27,14 +27,13 @@
         android:id="@+id/txtInputCadBusq"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.39">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edTxtCadBusq"
             android:layout_width="260dp"
@@ -42,22 +41,20 @@
             android:maxLength="30"
             android:fontFamily="@font/comfortaa"
             android:hint="¿Qué te apetece hacer?"
-            android:textColor="#E3E3E3"
-            android:textColorHint="#E3E3E3" />
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputLoc"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:textColorHint="#E3E3E3"
+        android:textColorHint="#959595"
         app:errorEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.61">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edTxtLoc"
             android:layout_width="260dp"
@@ -66,8 +63,7 @@
             android:inputType="textPersonName"
             android:hint="¿En dónde?"
             android:maxLength="30"
-            android:textColor="#E3E3E3"
-            android:textColorHint="#E3E3E3" />
+            android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
