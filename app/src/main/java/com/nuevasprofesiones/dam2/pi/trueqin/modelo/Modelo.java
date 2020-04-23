@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class Modelo {
 
-    final private String SERVER = "192.168.1.37";
+    final private String SERVER = "192.168.1.38";
     //final private String SERVER = "192.168.43.206";
     final private int PUERTO = 6000;
     private Socket clientSocket;
@@ -190,6 +190,16 @@ public class Modelo {
         this.dos.writeByte(5);
         this.dos.flush();
         this.dos.writeInt(Sesion.getId());
+        this.dos.flush();
+        this.dos.writeInt(idAnunc);
+        this.dos.flush();
+        return this.dis.readBoolean();
+    }
+
+    public boolean cancelar(int idAnunc) throws IOException {
+        this.dos.writeByte(6);
+        this.dos.flush();
+        this.dos.writeByte(6);
         this.dos.flush();
         this.dos.writeInt(idAnunc);
         this.dos.flush();

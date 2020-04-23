@@ -18,8 +18,7 @@
             android:label="@string/title_activity_trueques"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".controlador.general.AnuncioActivity" />
-        <activity android:name=".controlador.general.ListaAnuncios" />
-        <activity android:name=".controlador.perfil.AnuncioEditar" />
+        <activity android:name=".controlador.general.ListaAnuncios" />/>
         <activity android:name=".controlador.perfil.NuevoAnuncio" />
         <activity android:name=".controlador.RegistroUsuario" />
         <activity

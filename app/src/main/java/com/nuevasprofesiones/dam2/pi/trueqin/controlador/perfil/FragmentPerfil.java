@@ -131,27 +131,10 @@ public class FragmentPerfil extends Fragment {
     }
 
     private void clickRefresh() {
-//        TextView txtPuntos;
-//        SqlThreadObtienePuntos sqlThreadObtienePuntos;
-//        try {
-//            sqlThreadObtienePuntos = new SqlThreadObtienePuntos();
-//            sqlThreadObtienePuntos.start();
-//            sqlThreadObtienePuntos.join();
-//            if (sqlThreadObtienePuntos.getExito()) {
-//                txtPuntos = view.findViewById(R.id.txtPuntosPerfil);
-//                txtPuntos.setText(txtPuntos.getText().toString().substring(0, txtPuntos.getText().toString().indexOf("\n") + 1).concat(Integer.toString(Sesion.getPuntos())));
-
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.detach(this);
-                transaction.attach(this);
-                transaction.commit();
-//            } else {
-//                creaDialogosError();
-//            }
-//        } catch (InterruptedException ie) {
-//            System.err.println(ie.getMessage());
-//            creaDialogosError();
-//        }
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.detach(this);
+        transaction.attach(this);
+        transaction.commit();
     }
 
     private void clickTrueques() {

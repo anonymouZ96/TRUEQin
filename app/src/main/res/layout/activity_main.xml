@@ -91,7 +91,7 @@
 
     <ImageView
         android:id="@+id/imgLogoTxt"
-        android:layout_width="400dp"
+        android:layout_width="wrap_content"
         android:layout_height="238dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
