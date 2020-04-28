@@ -3,6 +3,8 @@ package com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil.trueques;
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -13,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.nuevasprofesiones.dam2.pi.trueqin.R;
 import com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil.trueques.ui.main.SectionsPagerAdapter;
 
-public class ActivityTrueques extends AppCompatActivity implements ExpListViewAdapterSolicitantes.ActualizarElem {
+public class ActivityTrueques extends AppCompatActivity {
 
     private SectionsPagerAdapter sectionsPagerAdapter;
 
@@ -31,10 +33,10 @@ public class ActivityTrueques extends AppCompatActivity implements ExpListViewAd
     }
 
     @Override
-    public void actualizar() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.detach(sectionsPagerAdapter.getItem(1));
-        transaction.attach(sectionsPagerAdapter.getItem(1));
-        transaction.commit();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
     }
+
 }

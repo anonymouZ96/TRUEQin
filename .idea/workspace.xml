@@ -7,9 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2113b2b-3d2f-477b-a7fa-6b07a598ed7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/map_marker.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/pencil_outline.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialogo_custom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/SqlThreadClose.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/general/Ayuda.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/general/ExpListViewAdapterAyuda.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_ayuda.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/expand_group_ayuda.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
@@ -20,15 +22,24 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/ActivityInstrucciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/ActivityInstrucciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/RegistroUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/RegistroUsuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/general/AnuncioActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/general/AnuncioActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/AnuncioEditar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/FragmentPerfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/FragmentPerfil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/general/ListaAnuncios.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/general/ListaAnuncios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/EdMisDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/EdMisDatos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/NuevoAnuncio.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/NuevoAnuncio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/trueques/ActivityTrueques.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/trueques/ActivityTrueques.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/trueques/ExpListViewAdapterSolicitantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/controlador/perfil/trueques/ExpListViewAdapterSolicitantes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/modelo/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/modelo/Modelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_anuncio.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_anuncio.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_anuncio_editar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/modelo/utils/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nuevasprofesiones/dam2/pi/trueqin/modelo/utils/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_ed_mis_datos.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_ed_mis_datos.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/expand_group_solicitantes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/expand_group_solicitantes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +47,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="9WVDU19316003570" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5_API_25" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -54,8 +65,8 @@
       <list>
         <option value="UML Sequence" />
         <option value="UML Class" />
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,6 +91,7 @@
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
+      <recent name="com.nuevasprofesiones.dam2.pi.trueqin.controlador.general" />
       <recent name="com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil" />
     </key>
   </component>
@@ -271,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587586874961</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="v6 24/04/20">
+      <created>1587680555086</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1587680555087</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -295,6 +314,7 @@
     <MESSAGE value="v3 20/04/20" />
     <MESSAGE value="v4 21/04/20" />
     <MESSAGE value="v5 22/04/20" />
-    <option name="LAST_COMMIT_MESSAGE" value="v5 22/04/20" />
+    <MESSAGE value="v6 24/04/20" />
+    <option name="LAST_COMMIT_MESSAGE" value="v6 24/04/20" />
   </component>
 </project>

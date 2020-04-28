@@ -8,8 +8,13 @@
         android:title="Editar mis datos"
         app:showAsAction="never" />
     <item
+        android:id="@+id/menuAyuda"
+        android:orderInCategory="100"
+        android:title="Ayuda"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/menuSalir"
         android:orderInCategory="100"
-        android:title="Salir"
+        android:title="Cerrar sesión"
         app:showAsAction="never" />
 </menu>

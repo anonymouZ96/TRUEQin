@@ -12,6 +12,8 @@ import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -40,6 +42,13 @@ public class AnuncioActivity extends AppCompatActivity {
         k = 0;
         this.idAnuncio = getIntent().getIntExtra("idAnuncio", -1);
         operacAnunucio();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
     }
 
     @Override
@@ -266,6 +275,8 @@ public class AnuncioActivity extends AppCompatActivity {
                     sqlThreadEditar.join();
                     if (sqlThreadEditar.getExito()) {
                         Toast.makeText(AnuncioActivity.this, "Actualizado correctamente", Toast.LENGTH_SHORT).show();
+                        AnuncioActivity.k = 1;
+                        ((AnuncioActivity) AnuncioActivity.this).onResume();
                     }
                 } catch (InterruptedException ie) {
                     System.err.println(ie.getMessage());

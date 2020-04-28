@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class Modelo {
 
-    final private String SERVER = "192.168.1.38";
+    final private String SERVER = "192.168.1.36";
     //final private String SERVER = "192.168.43.206";
     final private int PUERTO = 6000;
     private Socket clientSocket;
@@ -42,13 +42,13 @@ public class Modelo {
     }
 
     public void obtienePuntos() throws IOException {
-        this.dos.writeByte(14);
+        this.dos.writeByte(12);
         this.dos.flush();
         Sesion.setPuntos(this.dis.readShort());
     }
 
     public void cierraConexion() throws IOException {
-        this.dos.writeByte(15);
+        this.dos.writeByte(13);
         this.ois.close();
         this.oos.close();
         this.dos.close();
@@ -56,9 +56,9 @@ public class Modelo {
         this.clientSocket.close();
     }
 
-    public void exitoInicioSes(String email, String contras) throws IOException, ClassNotFoundException {
+    public void inicioSesion(String email, String contras) throws IOException, ClassNotFoundException {
         String[] valores = {email, contras};
-        this.dos.writeByte(2);
+        this.dos.writeByte(1);
         this.dos.flush();
         this.oos.writeObject(valores);
         this.oos.flush();
@@ -72,7 +72,7 @@ public class Modelo {
 
     public void registroUser(Usuario usuario) throws IOException, ClassNotFoundException {
         int idUS;
-        this.dos.writeByte(3);
+        this.dos.writeByte(2);
         this.dos.flush();
         this.oos.writeObject(usuario);
         this.oos.flush();
@@ -86,7 +86,7 @@ public class Modelo {
 
     public String[] obtieneDatosUsuarios(int idUs) throws SQLException, IOException, ClassNotFoundException {
         String[] datosUsuarios;
-        this.dos.writeByte(9);
+        this.dos.writeByte(7);
         this.dos.flush();
         this.dos.writeInt(idUs);
         this.dos.flush();
@@ -98,7 +98,7 @@ public class Modelo {
         String[] datos;
         datos = null;
         try {
-            this.dos.writeByte(6);
+            this.dos.writeByte(4);
             this.dos.flush();
             this.dos.writeByte(2);
             this.dos.flush();
@@ -114,7 +114,7 @@ public class Modelo {
     }
 
     public void insertaAnuncio(Anuncio anunc) throws IOException, ClassNotFoundException {
-        this.dos.writeByte(10);
+        this.dos.writeByte(8);
         this.dos.flush();
         anunc.setIdUs(Sesion.getId());
         this.oos.writeObject(anunc);
@@ -127,7 +127,7 @@ public class Modelo {
         String[] valores;
         valores = new String[2];
 
-        this.dos.writeByte(5);
+        this.dos.writeByte(3);
         this.dos.flush();
 
         this.dos.writeByte(2);
@@ -143,7 +143,7 @@ public class Modelo {
 
     public Anuncio[] buscarAnuncios(byte idCateg) throws IOException, ClassNotFoundException {
         Anuncio[] vecAnuncio;
-        this.dos.writeByte(5);
+        this.dos.writeByte(3);
         this.dos.flush();
         this.dos.writeByte(3);
         this.dos.flush();
@@ -157,7 +157,7 @@ public class Modelo {
 
     public Anuncio[] buscarAnuncios() throws IOException, ClassNotFoundException {
         Anuncio[] vecAnuncio;
-        this.dos.writeByte(5);
+        this.dos.writeByte(3);
         this.dos.flush();
         this.dos.writeByte(1);
         this.dos.flush();
@@ -169,7 +169,7 @@ public class Modelo {
         Anuncio anuncio;
         anuncio = null;
         try {
-            this.dos.writeByte(6);
+            this.dos.writeByte(4);
             this.dos.flush();
             this.dos.writeByte(1);
             this.dos.flush();
@@ -185,7 +185,7 @@ public class Modelo {
     }
 
     public boolean solicitar(int idAnunc) throws IOException {
-        this.dos.writeByte(6);
+        this.dos.writeByte(4);
         this.dos.flush();
         this.dos.writeByte(5);
         this.dos.flush();
@@ -197,7 +197,7 @@ public class Modelo {
     }
 
     public boolean cancelar(int idAnunc) throws IOException {
-        this.dos.writeByte(6);
+        this.dos.writeByte(4);
         this.dos.flush();
         this.dos.writeByte(6);
         this.dos.flush();
@@ -212,7 +212,7 @@ public class Modelo {
 
     public void buscarCateg() {
         try {
-            this.dos.writeByte(7);
+            this.dos.writeByte(5);
             this.dos.flush();
             this.categorias = (String[]) this.ois.readObject();
         } catch (ClassNotFoundException cnfe) {
@@ -223,7 +223,7 @@ public class Modelo {
     }
 
     public void editarMisDatos(String[] nuevo) throws IOException, ClassNotFoundException {
-        this.dos.writeByte(12);
+        this.dos.writeByte(10);
         this.dos.flush();
         this.oos.writeObject(nuevo);
         this.oos.flush();
@@ -232,7 +232,7 @@ public class Modelo {
 
     public void editarAnuncio(String nuevo, int id, byte op) throws IOException, ClassNotFoundException {
         String[] valores = {nuevo, Integer.toString(id), Byte.toString(op)};
-        this.dos.writeByte(13);
+        this.dos.writeByte(11);
         this.dos.flush();
         this.oos.writeObject(valores);
         this.oos.flush();
@@ -241,7 +241,7 @@ public class Modelo {
 
     public Trueque[] getTrueqes(boolean op) throws IOException, ClassNotFoundException {  // True solicitudes / False solicitantes
         Trueque[] vecTrueques;
-        this.dos.writeByte(8);
+        this.dos.writeByte(6);
         this.dos.flush();
         this.dos.writeByte(2);
         this.dos.flush();
@@ -253,7 +253,7 @@ public class Modelo {
 
     public boolean confirmarTrueque(int idAnunc, int idUS, byte opcion) throws IOException {
         int[] valores;
-        this.dos.writeByte(8);
+        this.dos.writeByte(6);
         this.dos.flush();
         this.dos.writeByte(1);
         this.dos.flush();
@@ -267,7 +267,7 @@ public class Modelo {
     }
 
     public boolean check(String cad, byte op) throws IOException {
-        this.dos.writeByte(11);
+        this.dos.writeByte(9);
         this.dos.flush();
         this.dos.writeByte(op);
         this.dos.flush();

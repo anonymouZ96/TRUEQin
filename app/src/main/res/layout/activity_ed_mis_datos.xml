@@ -68,7 +68,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
             android:maxLength="60"
-            android:textColor="#E3E3E3" />
+            android:textColor="#E3E3E3"
+            android:textColorHint="#959595" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -82,6 +83,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.35000002">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edTelefPerfil"
             android:layout_width="330dp"
@@ -89,7 +91,8 @@
             android:fontFamily="@font/comfortaa"
             android:inputType="number"
             android:maxLength="9"
-            android:textColor="#E3E3E3" />
+            android:textColor="#E3E3E3"
+            android:textColorHint="#959595" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView

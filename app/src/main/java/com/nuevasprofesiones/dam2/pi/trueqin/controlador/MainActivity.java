@@ -29,6 +29,8 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static boolean op;
+
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             sqlThreadMod = new SqlThreadMod();
             sqlThreadMod.start();
             sqlThreadMod.join();
+            cad = "";
             try {
                 cad = leeArchivoDatosIni();
                 edUser = findViewById(R.id.edEmail);
@@ -56,20 +59,26 @@ public class MainActivity extends AppCompatActivity {
                 System.err.println(ioe.getMessage());
             }
             if (sqlThreadMod.getExito()) {
-                Button btnIniSes = findViewById(R.id.btnIniSesion);
-                btnIniSes.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        abrePrincipal();
+                if (cad.matches(".+;\\w+") && !op) {
+                    abrePrincipal();
+                } else {
+                    if (op) {
+                        Button btnIniSes = findViewById(R.id.btnIniSesion);
+                        btnIniSes.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                abrePrincipal();
+                            }
+                        });
+                        Button btnReg = findViewById(R.id.btnRegistro);
+                        btnReg.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                abreRegistro();
+                            }
+                        });
                     }
-                });
-                Button btnReg = findViewById(R.id.btnRegistro);
-                btnReg.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        abreRegistro();
-                    }
-                });
+                }
             } else {
                 creaDialogosError("Se ha producido un error");
             }
@@ -132,12 +141,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        SqlThreadClose sqlThreadClose;
         try {
             super.onDestroy();
-            Sesion.getModelo().cierraConexion();
+            sqlThreadClose = new SqlThreadClose();
+            sqlThreadClose.start();
+            sqlThreadClose.join();
             android.os.Process.killProcess(android.os.Process.myPid());
-        } catch (IOException ioe) {
-            System.err.println(ioe.getMessage());
+        } catch (InterruptedException ie) {
+            System.err.println(ie.getMessage());
         }
     }
 
@@ -193,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                                     creaDialogosGuardar(email, contras);
                                 } else {
                                     intent = new Intent(this, ActivityInstrucciones.class);
+                                    op = false;
                                     startActivity(intent);
                                 }
                             } catch (FileNotFoundException fnfe) {
@@ -271,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void run() {
             try {
-                Sesion.getModelo().exitoInicioSes(this.email, this.contras);
+                Sesion.getModelo().inicioSesion(this.email, this.contras);
             } catch (IOException ioe) {
                 System.err.println(ioe.getMessage());
             } catch (ClassNotFoundException cnfe) {

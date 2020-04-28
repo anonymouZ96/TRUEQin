@@ -1,8 +1,10 @@
 package com.nuevasprofesiones.dam2.pi.trueqin.controlador;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.nuevasprofesiones.dam2.pi.trueqin.R;
+import com.nuevasprofesiones.dam2.pi.trueqin.controlador.general.Ayuda;
 import com.nuevasprofesiones.dam2.pi.trueqin.controlador.general.ListaAnuncios;
 import com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil.EdMisDatos;
 import com.nuevasprofesiones.dam2.pi.trueqin.controlador.ui.main.SectionsPagerAdapter;
@@ -47,21 +50,23 @@ public class ActivityInstrucciones extends AppCompatActivity implements Fragment
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        SqlThreadClose sqlThreadClose;
         try {
-            if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0 && getCurrentFocus() == findViewById(R.id.actInst)) {
-                Sesion.getModelo().cierraConexion();
-                finish();
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                sqlThreadClose = new SqlThreadClose();
+                sqlThreadClose.start();
+                sqlThreadClose.join();
+//                android.os.Process.killProcess(android.os.Process.myPid());
+                finishAffinity();
             }
-        } catch (IOException ioe) {
-            System.err.println(ioe.getMessage());
+        } catch (InterruptedException ie) {
+            System.err.println(ie.getMessage());
         }
         return super.onKeyDown(keyCode, event);
     }
 
     @Override
     protected void onDestroy() {
-        overridePendingTransition(0, 0);
-        android.os.Process.killProcess(android.os.Process.myPid());
         super.onDestroy();
     }
 
@@ -78,21 +83,48 @@ public class ActivityInstrucciones extends AppCompatActivity implements Fragment
         if (item.getItemId() == R.id.menuMisDatos) {
             i = new Intent(this, EdMisDatos.class);
             startActivity(i);
+            overridePendingTransition(0, 0);
         } else {
-            if (item.getItemId() == R.id.menuSalir) {
-                finish();
-                i = new Intent(this, MainActivity.class);
+            if (item.getItemId() == R.id.menuAyuda) {
+                i = new Intent(this, Ayuda.class);
                 startActivity(i);
+                overridePendingTransition(0, 0);
+            } else {
+                if (item.getItemId() == R.id.menuSalir) {
+                    creaDialogosConf();
+                }
             }
         }
         return super.onOptionsItemSelected(item);
     }
 
+    private void creaDialogosConf() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("¿Estás seguro?").setTitle("Cerrar sesión");
+        builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent i;
+                finish();
+                overridePendingTransition(0, 0);
+                i = new Intent(ActivityInstrucciones.this, MainActivity.class);
+                MainActivity.op = true;
+                startActivity(i);
+                overridePendingTransition(0, 0);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
     public void nuevoAnuncio(View v) {
         Intent i;
         i = new Intent(this, NuevoAnuncio.class);
         startActivity(i);
+        overridePendingTransition(0, 0);
     }
 
     @Override
@@ -102,5 +134,6 @@ public class ActivityInstrucciones extends AppCompatActivity implements Fragment
         i.putExtra("idCategoria", Byte.parseByte(item.id));
         i.putExtra("operac", (byte) 1);
         startActivity(i);
+        overridePendingTransition(0, 0);
     }
 }

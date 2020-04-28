@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,6 +39,13 @@ public class ListaAnuncios extends AppCompatActivity {
             txtNomCat.setText(txtNomCat.getText().toString().concat(" '").concat(getIntent().getStringExtra("cadBusq")).concat("'"));
         }
         operacionesLista();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
     }
 
     private void operacionesLista() {

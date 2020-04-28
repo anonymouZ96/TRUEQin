@@ -9,6 +9,8 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -34,6 +36,13 @@ public class NuevoAnuncio extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Sesion.getModelo().getCategorias());
         spinCateg = (Spinner) findViewById(R.id.spinCat);
         spinCateg.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
     }
 
     public void clickOfrecer(View v) {

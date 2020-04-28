@@ -26,16 +26,11 @@ public class ExpListViewAdapterSolicitantes extends BaseExpandableListAdapter {
     private ArrayList<String> listTrueques;
     private Map<String, ArrayList<String>> mapChild;
     private Context context;
-    public ActualizarElem actualizarElem;
 
     public ExpListViewAdapterSolicitantes(ArrayList<String> listTrueques, Map<String, ArrayList<String>> mapChild, Context context) {
         this.listTrueques = listTrueques;
         this.mapChild = mapChild;
         this.context = context;
-    }
-
-    public interface ActualizarElem {
-        public void actualizar();
     }
 
     @Override

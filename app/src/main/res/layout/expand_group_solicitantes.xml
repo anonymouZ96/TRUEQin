@@ -65,20 +65,3 @@
 
     </LinearLayout>
 </LinearLayout>
-
-
-    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--    android:layout_width="match_parent"-->
-    <!--    android:layout_height="match_parent"-->
-    <!--    android:orientation="vertical">-->
-
-    <!--    <TextView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:id="@+id/txtGroup"-->
-    <!--        android:textColor="@android:color/white"-->
-    <!--        android:background="@android:color/holo_blue_light"-->
-    <!--        android:padding="10dp"-->
-    <!--        android:layout_marginLeft="10dp"-->
-    <!--        android:layout_marginRight="10dp"/>-->
-    <!--</LinearLayout>-->

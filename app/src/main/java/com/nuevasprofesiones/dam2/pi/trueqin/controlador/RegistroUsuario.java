@@ -72,7 +72,7 @@ public class RegistroUsuario extends AppCompatActivity {
             sqlThreadReg = new SqlThreadReg(new Usuario(nombre,
                     apes,
                     email,
-                    fecha.substring(fecha.lastIndexOf("/") + 1).concat("/").concat(fecha.substring(fecha.indexOf("/") + 1, fecha.lastIndexOf("/"))).concat("/").concat(fecha.substring(0, fecha.indexOf("/"))),
+                    fecha,
                     contras1,
                     contras2,
                     telef));
