@@ -89,7 +89,7 @@ public class ListaAnuncios extends AppCompatActivity {
 
     private void creaDialogosError() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Se ha producido un error").setTitle("ERROR");
+        builder.setMessage(R.string.error_dialogo).setTitle("ERROR");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }

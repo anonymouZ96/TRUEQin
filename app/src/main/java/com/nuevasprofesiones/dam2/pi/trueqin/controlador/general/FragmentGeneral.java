@@ -93,13 +93,13 @@ public class FragmentGeneral extends Fragment {
                 i++;
                 if (!Sesion.getResultados()[i]) {
                     txtInputCadBusq.setErrorEnabled(true);
-                    txtInputCadBusq.setError("Cadena de búsqueda no válida");
+                    txtInputCadBusq.setError(getString(R.string.cadbusq_error_busq));
                     exito = false;
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
                     txtInputCadBusq.setErrorEnabled(true);
-                    txtInputCadBusq.setError("Ubicación no válida");
+                    txtInputCadBusq.setError(getString(R.string.ubic_error_busq));
                     exito = false;
                 }
                 if (exito) {
@@ -120,7 +120,7 @@ public class FragmentGeneral extends Fragment {
 
     private void creaDialogosError() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Se ha producido un error").setTitle("ERROR");
+        builder.setMessage(R.string.error_dialogo).setTitle("ERROR");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }

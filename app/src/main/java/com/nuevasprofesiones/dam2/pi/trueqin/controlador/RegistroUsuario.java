@@ -82,42 +82,42 @@ public class RegistroUsuario extends AppCompatActivity {
             if (Sesion.getResultados()[i]) {
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtInputEmailReg.setError("E-mail no válido");
+                    txtInputEmailReg.setError(getString(R.string.email_error));
                     txtInputEmailReg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtInputEmailReg.setError("Este E-mail ya está registrado");
+                    txtInputEmailReg.setError(getString(R.string.email_usado_error));
                     txtInputEmailReg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtInputPas1Reg.setError("Contraseña no válida, debe contener números y letras");
+                    txtInputPas1Reg.setError(getString(R.string.pass_formatoincorrecto_reg));
                     txtInputPas1Reg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtInputPas1Reg.setError("Las contraseñas no coinciden");
+                    txtInputPas1Reg.setError(getString(R.string.pass_nocoincide_error));
                     txtInputPas1Reg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtInputNomReg.setError("Nombre no válido");
+                    txtInputNomReg.setError(getString(R.string.nom_error_reg));
                     txtInputNomReg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtInputApesReg.setError("Apellidos no válidos");
+                    txtInputApesReg.setError(getString(R.string.apes_error_reg));
                     txtInputApesReg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtInputTelReg.setError("Teléfono no válido");
+                    txtInputTelReg.setError(getString(R.string.tel_error));
                     txtInputTelReg.setErrorEnabled(true);
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
-                    txtInputFechaReg.setError("Fecha no válida.");
+                    txtInputFechaReg.setError(getString(R.string.fecha_error_ini));
                     txtInputFechaReg.setErrorEnabled(true);
                 }
 
@@ -136,7 +136,7 @@ public class RegistroUsuario extends AppCompatActivity {
 
     private void creaDialogosError() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Se ha producido un error").setTitle("ERROR");
+        builder.setMessage(R.string.error_dialogo).setTitle("ERROR");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }
@@ -147,8 +147,8 @@ public class RegistroUsuario extends AppCompatActivity {
 
     private void creaDialogosGuardar(final String email, final String pass) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("¿Desea guardar sus datos de inicio de sesión?").setTitle("Guardar datos");
-        builder.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.save_ini_data).setTitle(R.string.tit_save_inidata);
+        builder.setPositiveButton(R.string.conf_save_inidata, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent;
                 try {
@@ -164,7 +164,7 @@ public class RegistroUsuario extends AppCompatActivity {
                 }
             }
         });
-        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent;
                 intent = new Intent(getApplicationContext(), ActivityInstrucciones.class);

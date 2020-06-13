@@ -143,23 +143,23 @@ public class AnuncioActivity extends AppCompatActivity {
                                     sqlThreadSolicitarAnuncio.start();
                                     sqlThreadSolicitarAnuncio.join();
                                     if (sqlThreadSolicitarAnuncio.getCodErr() == 0) {
-                                        Toast.makeText(getApplicationContext(), "Solicitado!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), R.string.solicitado, Toast.LENGTH_SHORT).show();
                                     } else {
                                         if (sqlThreadSolicitarAnuncio.getCodErr() == -1) {
-                                            creaDialogosError("Se ha producido un error");
+                                            creaDialogosError(getString(R.string.error_dialogo));
                                         } else {
                                             if (sqlThreadSolicitarAnuncio.getCodErr() == 1) {
                                                 creaDialogoCancelar();
                                             } else {
                                                 if (sqlThreadSolicitarAnuncio.getCodErr() == 2) {
-                                                    creaDialogosError("No tienes puntos suficientes");
+                                                    creaDialogosError(getString(R.string.nosufipuentos));
                                                 }
                                             }
                                         }
                                     }
                                 } catch (InterruptedException ie) {
                                     System.err.println(ie.getMessage());
-                                    creaDialogosError("Se ha producido un error");
+                                    creaDialogosError(getString(R.string.error_dialogo));
                                 }
                             }
                         });
@@ -177,11 +177,11 @@ public class AnuncioActivity extends AppCompatActivity {
                     }
                 }
             } else {
-                creaDialogosError("Se ha producido un error");
+                creaDialogosError(getString(R.string.error_dialogo));
             }
         } catch (InterruptedException ie) {
             System.err.println(ie.getMessage());
-            creaDialogosError("Se ha producido un error");
+            creaDialogosError(getString(R.string.error_dialogo));
         }
     }
 
@@ -198,19 +198,19 @@ public class AnuncioActivity extends AppCompatActivity {
 
         msg = "";
         if (op == 1) {
-            msg = "Nuevo título";
+            msg = getString(R.string.newtitulo_edanuncio);
             layoutIntroTexto.getEditText().setInputType(InputType.TYPE_CLASS_TEXT);
         } else {
             if (op == 2) {
-                msg = "Nueva descripción";
+                msg = getString(R.string.newdesc_edanuncio);
                 layoutIntroTexto.getEditText().setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
             } else {
                 if (op == 3) {
-                    msg = "Nueva ubicación";
+                    msg = getString(R.string.newubic_edanuncio);
                     layoutIntroTexto.getEditText().setInputType(InputType.TYPE_CLASS_TEXT);
                 } else {
                     if (op == 4) {
-                        msg = "Nuevos puntos necesarios";
+                        msg = getString(R.string.newpuntos_edanuncio);
                         layoutIntroTexto.getEditText().setInputType(InputType.TYPE_CLASS_NUMBER);
                     }
                 }
@@ -220,11 +220,11 @@ public class AnuncioActivity extends AppCompatActivity {
         layoutIntroTexto.setHint(msg);
 
 //        builder.setTitle(title);
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }
         });
-        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }
         });
@@ -243,7 +243,7 @@ public class AnuncioActivity extends AppCompatActivity {
         String[] listItems;
         byte i;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Elija la nueva categoría");
+        builder.setTitle(R.string.newcat_edanuncio);
 
         listItems = new String[Sesion.getModelo().getCategorias().length - 1];
         for (i = 0; i < categ - 1; i++) {
@@ -265,7 +265,7 @@ public class AnuncioActivity extends AppCompatActivity {
             }
         });
 
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 SqlThreadEditar sqlThreadEditar;
@@ -274,18 +274,18 @@ public class AnuncioActivity extends AppCompatActivity {
                     sqlThreadEditar.start();
                     sqlThreadEditar.join();
                     if (sqlThreadEditar.getExito()) {
-                        Toast.makeText(AnuncioActivity.this, "Actualizado correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AnuncioActivity.this, R.string.actualizado_ed_datos, Toast.LENGTH_SHORT).show();
                         AnuncioActivity.k = 1;
                         ((AnuncioActivity) AnuncioActivity.this).onResume();
                     }
                 } catch (InterruptedException ie) {
                     System.err.println(ie.getMessage());
-                    creaDialogosError("Se ha producido un error");
+                    creaDialogosError(getString(R.string.error_dialogo));
                 }
             }
         });
 
-        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             }
@@ -297,8 +297,8 @@ public class AnuncioActivity extends AppCompatActivity {
 
     private void creaDialogoCancelar() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("¿Desea cancelar su solicitud?").setTitle("Ya lo has solicitado");
-        builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.cancelar_solicitud).setTitle(R.string.yasolicitado);
+        builder.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 SqlThreadCancelaSolicitud sqlThreadCancelaSolicitud;
                 try {
@@ -306,15 +306,15 @@ public class AnuncioActivity extends AppCompatActivity {
                     sqlThreadCancelaSolicitud.start();
                     sqlThreadCancelaSolicitud.join();
                     if (sqlThreadCancelaSolicitud.getExito()) {
-                        Toast.makeText(AnuncioActivity.this, "¡Cancelado!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AnuncioActivity.this, R.string.cancelado, Toast.LENGTH_SHORT).show();
                     }
                 } catch (InterruptedException ie) {
-                    creaDialogosError("Se ha producido un error");
+                    creaDialogosError(getString(R.string.error_dialogo));
                     System.err.println(ie.getMessage());
                 }
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }
         });
@@ -328,9 +328,9 @@ public class AnuncioActivity extends AppCompatActivity {
                 nom.concat("\n")
                         .concat(email).concat("\n")
                         .concat(Integer.toString(tel)).concat("\n")
-                        .concat(Byte.toString(edad)).concat(" años")
-        ).setTitle("Info sobre el vendedor");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        .concat(Byte.toString(edad)).concat(getString(R.string.anios))
+        ).setTitle(R.string.info_vendedor_anuncio);
+        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }
         });
@@ -341,7 +341,7 @@ public class AnuncioActivity extends AppCompatActivity {
     private void creaDialogosError(String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(msg).setTitle("ERROR");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }
         });

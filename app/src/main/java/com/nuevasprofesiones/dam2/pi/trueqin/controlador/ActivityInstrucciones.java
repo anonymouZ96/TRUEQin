@@ -27,9 +27,6 @@ import com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil.EdMisDatos;
 import com.nuevasprofesiones.dam2.pi.trueqin.controlador.ui.main.SectionsPagerAdapter;
 import com.nuevasprofesiones.dam2.pi.trueqin.controlador.categorias.FragmentCategorias;
 import com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil.NuevoAnuncio;
-import com.nuevasprofesiones.dam2.pi.trueqin.modelo.Sesion;
-
-import java.io.IOException;
 
 public class ActivityInstrucciones extends AppCompatActivity implements FragmentCategorias.OnListFragmentInteractionListener {
 
@@ -56,7 +53,6 @@ public class ActivityInstrucciones extends AppCompatActivity implements Fragment
                 sqlThreadClose = new SqlThreadClose();
                 sqlThreadClose.start();
                 sqlThreadClose.join();
-//                android.os.Process.killProcess(android.os.Process.myPid());
                 finishAffinity();
             }
         } catch (InterruptedException ie) {
@@ -100,8 +96,8 @@ public class ActivityInstrucciones extends AppCompatActivity implements Fragment
 
     private void creaDialogosConf() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("¿Estás seguro?").setTitle("Cerrar sesión");
-        builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.cerrarses_dialog).setTitle(R.string.tit_cerrarses_dialog);
+        builder.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Intent i;
                 finish();
@@ -112,7 +108,7 @@ public class ActivityInstrucciones extends AppCompatActivity implements Fragment
                 overridePendingTransition(0, 0);
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }
         });

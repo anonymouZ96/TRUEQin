@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="57dp"
         android:fontFamily="@font/comfortaa"
-        android:text="TRUEQin"
+        android:text="@string/app_name"
         android:textAlignment="center"
         android:textColor="#E3E3E3"
         android:textSize="40sp"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:maxLength="30"
             android:fontFamily="@font/comfortaa"
-            android:hint="¿Qué te apetece hacer?"
+            android:hint="@string/txt_nom_anuncio"
             android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
             android:inputType="textPersonName"
-            android:hint="¿En dónde?"
+            android:hint="@string/txt_localizacion"
             android:maxLength="30"
             android:textColor="#E3E3E3" />
     </com.google.android.material.textfield.TextInputLayout>

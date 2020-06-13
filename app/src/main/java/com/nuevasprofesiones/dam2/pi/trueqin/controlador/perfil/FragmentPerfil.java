@@ -58,7 +58,7 @@ public class FragmentPerfil extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        SqlThreadObtienePuntos sqlThreadObtienePuntos;
+        final SqlThreadObtienePuntos sqlThreadObtienePuntos;
         ListView listaAnunc;
         TextView txtPuntos;
         final SqlThreadLLenaLista sqlThreadLLenaLista;
@@ -121,7 +121,7 @@ public class FragmentPerfil extends Fragment {
 
     private void creaDialogosError() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Se ha producido un error").setTitle("ERROR");
+        builder.setMessage(R.string.error_dialogo).setTitle("ERROR");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }

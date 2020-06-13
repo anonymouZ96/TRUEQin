@@ -91,25 +91,25 @@ public class NuevoAnuncio extends AppCompatActivity {
                 if (!Sesion.getResultados()[i]) {
                     exito = false;
                     txtInputTituloNew.setErrorEnabled(true);
-                    txtInputTituloNew.setError("Título no válido");
+                    txtInputTituloNew.setError(getString(R.string.tit_error_newanuncio));
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
                     exito = false;
                     txtInputDescNew.setErrorEnabled(true);
-                    txtInputDescNew.setError("Descripción no válida");
+                    txtInputDescNew.setError(getString(R.string.desc_error_newanuncio));
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
                     exito = false;
                     txtInputUbicNew.setErrorEnabled(true);
-                    txtInputUbicNew.setError("Ubicación no válida");
+                    txtInputUbicNew.setError(getString(R.string.ubic_error_busq));
                 }
                 i++;
                 if (!Sesion.getResultados()[i]) {
                     exito = false;
                     txtInputPuntosNew.setErrorEnabled(true);
-                    txtInputPuntosNew.setError("Puntos no válidos");
+                    txtInputPuntosNew.setError(getString(R.string.points_error_newanuncio));
                 }
                 if (exito) {
                     h.sendEmptyMessage(1);
@@ -127,7 +127,7 @@ public class NuevoAnuncio extends AppCompatActivity {
 
     private void creaDialogosError() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Se ha producido un error").setTitle("ERROR");
+        builder.setMessage(R.string.error_dialogo).setTitle("ERROR");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }
@@ -143,7 +143,7 @@ public class NuevoAnuncio extends AppCompatActivity {
     Handler h = new Handler() {
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
-                Toast.makeText(getApplicationContext(), "Anuncio añadido", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.anuncioaniadido_newanuncio, Toast.LENGTH_SHORT).show();
             }
         }
     };

@@ -106,32 +106,32 @@ public class EdMisDatos extends AppCompatActivity {
                 exito = true;
                 if (!Sesion.getResultados()[1]) {
                     exito = false;
-                    txtInputEmailPerfil.setError("E-mail no válido");
+                    txtInputEmailPerfil.setError(getString(R.string.email_error));
                     txtInputEmailPerfil.setErrorEnabled(true);
                 }
                 if (!Sesion.getResultados()[2]) {
                     exito = false;
-                    txtInputEmailPerfil.setError("Este E-mail ya está registrado");
+                    txtInputEmailPerfil.setError(getString(R.string.email_usado_error));
                     txtInputEmailPerfil.setErrorEnabled(true);
                 }
                 if (!Sesion.getResultados()[3]) {
                     exito = false;
-                    txtInputTelefPerfil.setError("Este teléfono no es válido");
+                    txtInputTelefPerfil.setError(getString(R.string.tel_error));
                     txtInputTelefPerfil.setErrorEnabled(true);
                 }
                 if (!Sesion.getResultados()[4]) {
                     exito = false;
-                    txtInputPas1Perfil.setError("Esta contraseña no es válida");
+                    txtInputPas1Perfil.setError(getString(R.string.pass_error));
                     txtInputPas1Perfil.setErrorEnabled(true);
                 }
                 if (!Sesion.getResultados()[5]) {
                     exito = false;
-                    txtInputPas1Perfil.setError("Las contraseñas no coinciden");
+                    txtInputPas1Perfil.setError(getString(R.string.pass_nocoincide_error));
                     txtInputPas1Perfil.setErrorEnabled(true);
                 }
                 if (!Sesion.getResultados()[6]) {
                     exito = false;
-                    txtInputPasOldPerfil.setError("La contraseña antigua no es correcta");
+                    txtInputPasOldPerfil.setError(getString(R.string.passold_error));
                     txtInputPasOldPerfil.setErrorEnabled(true);
                 }
                 if (exito) {
@@ -139,7 +139,7 @@ public class EdMisDatos extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     startActivity(getIntent());
                     overridePendingTransition(0, 0);
-                    Toast.makeText(this, "Actualizado correctamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.actualizado_ed_datos, Toast.LENGTH_SHORT).show();
                 }
             } else {
                 creaDialogosError();
@@ -152,7 +152,7 @@ public class EdMisDatos extends AppCompatActivity {
 
     private void creaDialogosError() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Se ha producido un error").setTitle("ERROR");
+        builder.setMessage(R.string.error_dialogo).setTitle("ERROR");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }

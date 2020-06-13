@@ -24,7 +24,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:hint="Título del anuncio"
+            android:hint="@string/tit_new_anuncio"
             android:inputType="textShortMessage"
             android:maxLength="30"
             android:textColor="#E3E3E3"/>
@@ -49,7 +49,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:hint="Descripción"
+            android:hint="@string/desc_new_anuncio"
             android:inputType="textMultiLine"
             android:maxLength="300"
             android:textColor="#E3E3E3" />
@@ -73,7 +73,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:hint="Ubicación"
+            android:hint="@string/ubic_new_anuncio"
             android:inputType="textPersonName"
             android:maxLength="30"
             android:textColor="#E3E3E3" />
@@ -96,7 +96,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:hint="Puntos"
+            android:hint="@string/puntos_new_anuncio"
             android:inputType="number"
             android:maxLength="4"
             android:textColor="#E3E3E3" />
@@ -106,7 +106,7 @@
         android:id="@+id/txtCategoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Categoría:"
+        android:text="@string/cat_new_anuncio"
         android:textColor="#E3E3E3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +132,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bordes_redondeados_cel"
         android:onClick="clickOfrecer"
-        android:text="Ofrecer!"
+        android:text="@string/ofrecer_new_anuncio"
         android:textColor="#E3E3E3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

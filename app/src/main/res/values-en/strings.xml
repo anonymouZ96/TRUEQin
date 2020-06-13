@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">TRUEQin</string>
+    <string name="tab_text_1">General</string>
+    <string name="tab_text_2">Categories</string>
+    <string name="tab_text_3">Profile</string>
+
+    <string name="menu_anuncios">Ads</string>
+    <string name="menu_perfil">My profile</string>
+    <string name="txt_nom_anuncio">What do you want to do?</string>
+    <string name="txt_localizacion">Where?</string>
+    <string name="txtTitulo">TRUEQin</string>
+    <string name="bototnBuscar">Find it!</string>
+    <string name="nav_categor">Categories</string>
+    <string name="title_activity_trueques">Trueques</string>
+    <string name="email_ini_sesion">Type your E-mail</string>
+    <string name="pass_ini_sesion">Type your password</string>
+    <string name="_ini_sesion">Sign in</string>
+    <string name="no_account_ini_sesion">Don\'t have an account yet?</string>
+    <string name="reg_ini_sesion">Sign up</string>
+    <string name="info_ed_misdatos">Fill in the fields you want to modify</string>
+    <string name="nom_ed_misdatos">My name:</string>
+    <string name="fecnac_ed_misdatos">My date of birth</string>
+    <string name="pass_ed_misdatos">Modify password\n(Min. 6 characters (letters and numbers)</string>
+    <string name="oldpass_ed_misdatos">Enter the old password</string>
+    <string name="newpass_ed_misdatos">Enter the new password</string>
+    <string name="repeatpass_ed_misdatos">Repeat the new password</string>
+    <string name="confirmar_ed_misdatos">Confirm</string>
+    <string name="puntos_perfil">POINTS\n</string>
+    <string name="actualizar_perfil">Refresh</string>
+    <string name="noresults_anuncios">There is no result :(</string>
+    <string name="resultados_anuncios">Results about</string>
+    <string name="tit_new_anuncio">Ad Title</string>
+    <string name="desc_new_anuncio">Description</string>
+    <string name="ubic_new_anuncio">Location</string>
+    <string name="puntos_new_anuncio">Points</string>
+    <string name="cat_new_anuncio">Category:</string>
+    <string name="ofrecer_new_anuncio">Offer!</string>
+    <string name="nom_reg">Name</string>
+    <string name="apellidos_reg">Surnames</string>
+    <string name="fecnac_reg">My date of birth (dd/mm/aaaa)</string>
+    <string name="tel_reg">Telephone number</string>
+    <string name="reg_reg">Sign up</string>
+    <string name="repeatpass_reg">Repeat the password</string>
+    <string name="pass_reg">Password(+6 characters,letters and numbers)</string>
+    <string name="editar_mis_datos_menu">Edit my data</string>
+    <string name="ayuda_menu">Help</string>
+    <string name="cerrar_sesi_n_menu">Sign out</string>
+    <string name="solicitudes_trueqes">REQUESTS</string>
+    <string name="solicitantes_trueqes">APPLICANTS</string>
+    <string name="desc_anuncio">DESCRIPTION</string>
+    <string name="puntos_anuncio">NECESSARY POINTS</string>
+    <string name="cat_anuncio">CATEGORY</string>
+    <string name="info_vendedor_anuncio">Info about the seller</string>
+    <string name="error_dialogo">An error has occurred</string>
+    <string name="email_error">Invalid email</string>
+    <string name="email_usado_error">This E-mail is already registered</string>
+    <string name="tel_error">This number phone is not valid</string>
+    <string name="pass_error">This password is not valid</string>
+    <string name="pass_nocoincide_error">Las contraseñas no coinciden</string>
+    <string name="passold_error">The old password is not correct</string>
+    <string name="actualizado_ed_datos">Updated successfully</string>
+    <string name="incorrect_error_ini">The username or password entered is not correct</string>
+    <string name="variosintentos_error_ini">You have entered your credentials multiple times incorrectly, please wait a bit and re-enter them</string>
+    <string name="cadbusq_error_busq">Invalid search string</string>
+    <string name="ubic_error_busq">Invalid location</string>
+    <string name="tit_error_newanuncio">Invalid title</string>
+    <string name="desc_error_newanuncio">Invalid description</string>
+    <string name="points_error_newanuncio">Invalid points</string>
+    <string name="anuncioaniadido_newanuncio">Ad added</string>
+    <string name="save_ini_data">Do you want to save your login details?</string>
+    <string name="tit_save_inidata">Guardar datos</string>
+    <string name="conf_save_inidata">Save</string>
+    <string name="cancelar">Cancel</string>
+    <string name="pass_formatoincorrecto_reg">Invalid password, must contain numbers and letters</string>
+    <string name="nom_error_reg">Invalid name</string>
+    <string name="apes_error_reg">Invalid last names</string>
+    <string name="fecha_error_ini">Invalid date of birth</string>
+    <string name="newtitulo_edanuncio">New title</string>
+    <string name="newdesc_edanuncio">New description</string>
+    <string name="newubic_edanuncio">New location</string>
+    <string name="newpuntos_edanuncio">New points needed</string>
+    <string name="newcat_edanuncio">Choose the new category</string>
+    <string name="cancelar_solicitud">Do you want to cancel your request?</string>
+    <string name="yasolicitado">You have already requested it</string>
+    <string name="si">Yes</string>
+    <string name="cancelado">Cancelled!</string>
+    <string name="anios"> years old</string>
+    <string name="solicitado">Requested!!</string>
+    <string name="nosufipuentos">You don\'t have enough points</string>
+    <string name="cerrarses_dialog">Are you sure?</string>
+    <string name="tit_cerrarses_dialog">Sign out</string>
+
+    <string-array name="opciones_ayuda">
+        <item>How do I search ads?</item>
+        <item>How do I request an ad?</item>
+        <item>How do I publish an ad?</item>
+        <item>How do I edit my personal data?</item>
+        <item>How do I edit my ads?</item>
+        <item>How do I know who has requested my ads?</item>
+        <item>How do I know the status of my requests?</item>
+    </string-array>
+
+    <string-array name="contenido_opciones_ayuda">
+        <item>Locate in the general tab, you will see two fields, one for the text contained in the ad and the other for the location of the activity, the latter is optional, fill them out and click on search, all the ads that meet the requirements will appear.</item>
+        <item>Once you have found the activity you want, click on the hands clasped button that appears below the button, this will send a request to the author of the ad as long as you have the necessary points.</item>
+        <item>In any main tab, an \'+\' icon appears in the lower right corner, press it and a new screen will open with a series of fields to fill in. Once you have finished, press the bottom button and your ad will be published and will be available to all users.</item>
+        <item>Click on the 3 points in the upper right corner, then in \'Edit my data\', a screen will open with a series of fields and with your current data, you only need to modify the one that interests you, they will only be updated the fields that have been edited.</item>
+        <item>In the profile tab your ads appear, click on the one you want to edit and a screen will open with the ad data, click again on the field you want to modify, enter the new value and click on the button.</item>
+        <item>In the profile tab you have a TRUEQES button, press it and another screen will open with two tabs, in the applicants tab the users who have requested your ads will appear along with the data of this, in addition there are two bototnes to reject or accept said requests.</item>
+        <item>In the profile tab you have a TRUEQES button, press it and another screen will open with two tabs, in the requests tab the ads you have requested to other users appear and the status they are in, if pending, rejected or accepted.</item>
+    </string-array>
+</resources>

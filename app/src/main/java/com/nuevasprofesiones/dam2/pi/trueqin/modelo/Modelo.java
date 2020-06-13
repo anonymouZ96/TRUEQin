@@ -15,8 +15,7 @@ import java.sql.SQLException;
 
 public class Modelo {
 
-    final private String SERVER = "192.168.1.36";
-    //final private String SERVER = "192.168.43.206";
+    final private String SERVER = "192.168.1.60";
     final private int PUERTO = 6000;
     private Socket clientSocket;
     private InetSocketAddress address;

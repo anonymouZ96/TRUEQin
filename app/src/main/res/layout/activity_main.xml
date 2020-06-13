@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
             android:inputType="textEmailAddress"
-            android:hint="Introduce tu E-mail" />
+            android:hint="@string/email_ini_sesion" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +43,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa"
-            android:hint="Introduce tu contraseña"
+            android:hint="@string/pass_ini_sesion"
             android:inputType="textPassword"
             android:maxLength="30" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bordes_redondeados_mor"
         android:fontFamily="@font/comfortaa"
-        android:text="Iniciar sesión"
+        android:text="@string/_ini_sesion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/comfortaa"
-        android:text="¿Aún no tienes cuenta?"
+        android:text="@string/no_account_ini_sesion"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bordes_redondeados_mor"
         android:fontFamily="@font/comfortaa"
-        android:text="Registrarme"
+        android:text="@string/reg_ini_sesion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

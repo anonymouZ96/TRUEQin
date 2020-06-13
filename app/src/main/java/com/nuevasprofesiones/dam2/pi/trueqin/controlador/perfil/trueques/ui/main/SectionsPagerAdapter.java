@@ -1,11 +1,12 @@
 package com.nuevasprofesiones.dam2.pi.trueqin.controlador.perfil.trueques.ui.main;
 
 import android.content.Context;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.nuevasprofesiones.dam2.pi.trueqin.R;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -13,12 +14,13 @@ import androidx.fragment.app.FragmentPagerAdapter;
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    private static final String[] TAB_TITLES = new String[]{"SOLICITUDES", "SOLICITANTES"};
+    private static String[] TAB_TITLES;
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
+        TAB_TITLES  = new String[]{mContext.getResources().getString(R.string.solicitudes_trueqes), mContext.getResources().getString(R.string.solicitantes_trueqes)};
     }
 
     @Override

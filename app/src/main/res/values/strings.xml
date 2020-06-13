@@ -1,38 +1,100 @@
 <resources>
     <string name="app_name">TRUEQin</string>
-    <string name="title_activity_instrucciones">ActivityInstrucciones</string>
     <string name="tab_text_1">General</string>
     <string name="tab_text_2">Categorías</string>
     <string name="tab_text_3">Perfil</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_anuncios">Anuncios</string>
     <string name="menu_perfil">Mi Perfil</string>
-    <string name="txt_nom_anuncio">¿En algún lugar en especial?\nOPCIONAL</string>
-    <string name="txt_localizacion">¿Qué te apetece hacer?</string>
+    <string name="txt_nom_anuncio">¿Qué te apetece hacer?</string>
+    <string name="txt_localizacion">¿En dónde?</string>
     <string name="txtTitulo">TRUEQin</string>
     <string name="bototnBuscar">¡Encuéntralo!</string>
     <string name="nav_categor">Categorías</string>
-    <string name="title_activity_login">Entra en tu cuenta</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
     <string name="title_activity_trueques">Trueques</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="email_ini_sesion">Introduce tu E-mail</string>
+    <string name="pass_ini_sesion">Introduce tu contraseña</string>
+    <string name="_ini_sesion">Iniciar sesión</string>
+    <string name="no_account_ini_sesion">¿Aún no tienes cuenta?</string>
+    <string name="reg_ini_sesion">Registrarme</string>
+    <string name="info_ed_misdatos">Rellena los campos que deseas modificar</string>
+    <string name="nom_ed_misdatos">Mi nombre:</string>
+    <string name="fecnac_ed_misdatos">Mi fecha de nacimiento:</string>
+    <string name="pass_ed_misdatos">Modificar contraseña\n(Mín. 6 caracteres(letras y números)</string>
+    <string name="oldpass_ed_misdatos">Introduzca la antigua contraseña</string>
+    <string name="newpass_ed_misdatos">Introduzca la nueva contraseña</string>
+    <string name="repeatpass_ed_misdatos">Repite la contraseña</string>
+    <string name="confirmar_ed_misdatos">Confirmar</string>
+    <string name="puntos_perfil">PUNTOS\n</string>
+    <string name="actualizar_perfil">Actualizar</string>
+    <string name="trueqes_perfil" translatable="false">Trueqes</string>
+    <string name="noresults_anuncios">No hay ningún resultado :(</string>
+    <string name="resultados_anuncios">Resultados sobre</string>
+    <string name="tit_new_anuncio">Título del anuncio</string>
+    <string name="desc_new_anuncio">Descripción</string>
+    <string name="ubic_new_anuncio">Ubicación</string>
+    <string name="puntos_new_anuncio">Puntos</string>
+    <string name="cat_new_anuncio">Categoría:</string>
+    <string name="ofrecer_new_anuncio">Ofrecer!</string>
+    <string name="nom_reg">Nombre</string>
+    <string name="apellidos_reg">Apellidos</string>
+    <string name="email_reg" translatable="false">E-mail</string>
+    <string name="fecnac_reg">Fecha de nacimiento (dd/mm/aaaa)</string>
+    <string name="tel_reg">Teléfono</string>
+    <string name="reg_reg">Registrarme</string>
+    <string name="repeatpass_reg">Repite la contraseña</string>
+    <string name="pass_reg">Contraseña(+6 caracteres,letras y números)</string>
+    <string name="editar_mis_datos_menu">Editar mis datos</string>
+    <string name="ayuda_menu">Ayuda</string>
+    <string name="cerrar_sesi_n_menu">Cerrar sesión</string>
+    <string name="solicitudes_trueqes">SOLICITUDES</string>
+    <string name="solicitantes_trueqes">SOLICITANTES</string>
+    <string name="desc_anuncio">DESCRIPCION</string>
+    <string name="puntos_anuncio">PUNTOS NECESARIOS</string>
+    <string name="cat_anuncio">CATEGORÍA</string>
+    <string name="info_vendedor_anuncio">Info sobre el vendedor</string>
+    <string name="error_dialogo">Se ha producido un error</string>
+    <string name="email_error">E-mail no válido</string>
+    <string name="email_usado_error">Este E-mail ya está registrado</string>
+    <string name="tel_error">Este teléfono no es válido</string>
+    <string name="pass_error">Esta contraseña no es válida</string>
+    <string name="pass_nocoincide_error">Las contraseñas no coinciden</string>
+    <string name="passold_error">La contraseña antigua no es correcta</string>
+    <string name="actualizado_ed_datos">Actualizado correctamente</string>
+    <string name="incorrect_error_ini">El usuario o la contraseña introducida no es correcta</string>
+    <string name="variosintentos_error_ini">Ha introducido varias veces las credenciales de forma incorrecta, espere un poco y vuélvalas a introducir</string>
+    <string name="cadbusq_error_busq">Cadena de búsqueda no válida</string>
+    <string name="ubic_error_busq">Ubicación no válida</string>
+    <string name="tit_error_newanuncio">Título no válido</string>
+    <string name="desc_error_newanuncio">Descripción no válida</string>
+    <string name="points_error_newanuncio">Puntos no válidos</string>
+    <string name="anuncioaniadido_newanuncio">Anuncio añadido</string>
+    <string name="save_ini_data">¿Desea guardar sus datos de inicio de sesión?</string>
+    <string name="tit_save_inidata">Guardar datos</string>
+    <string name="conf_save_inidata">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="pass_formatoincorrecto_reg">Contraseña no válida, debe contener números y letras</string>
+    <string name="nom_error_reg">Nombre no válido</string>
+    <string name="apes_error_reg">Apellidos no válidos</string>
+    <string name="fecha_error_ini">Fecha no válida</string>
+    <string name="title_activity_instrucciones" translatable="false">title_activity_instrucciones</string>
+    <string name="newtitulo_edanuncio">Nuevo título</string>
+    <string name="newdesc_edanuncio">Nueva descripción</string>
+    <string name="newubic_edanuncio">Nueva ubicación</string>
+    <string name="newpuntos_edanuncio">Nuevos puntos necesarios</string>
+    <string name="newcat_edanuncio">Elija la nueva categoría</string>
+    <string name="ok" translatable="false">Ok</string>
+    <string name="cancelar_solicitud">¿Desea cancelar su solicitud?</string>
+    <string name="yasolicitado">Ya lo has solicitado</string>
+    <string name="si">Sí</string>
+    <string name="cancelado">¡Cancelado!</string>
+    <string name="no" translatable="false">No</string>
+    <string name="anios">\" años\"</string>
+    <string name="OK" translatable="false">OK</string>
+    <string name="solicitado">Solicitado!</string>
+    <string name="nosufipuentos">No tienes puntos suficientes</string>
+    <string name="cerrarses_dialog">¿Estás seguro?</string>
+    <string name="tit_cerrarses_dialog">Cerrar sesión</string>
 
     <string-array name="opciones_ayuda">
         <item>¿Cómo buscar anuncios?</item>
@@ -45,12 +107,12 @@
     </string-array>
 
     <string-array name="contenido_opciones_ayuda">
-        <item>¿Cómo buscar anuncios?</item>
-        <item>¿Cómo solicito un anuncio?</item>
-        <item>¿Cómo publico un anuncio?</item>
-        <item>¿Cómo edito mis datos personales?</item>
-        <item>¿Cómo edito mis anuncios?</item>
-        <item>¿Cómo se quien ha solicitado mis anuncios?</item>
-        <item>¿Cómo sé el estado de mis solicitudes?</item>
+        <item>Situate en la pestaña general, verás dos campos, uno para texto contenido en el anuncio y otro para la ubicación de la actividad, este último es opcional, rellenalos y pulsa en buscar, aparecerán todos los anuncios que cumplan los requisitos.</item>
+        <item>Una vez que hayas encontrado la actividad que deseas pulsa en botón de las manos entrelazadas que aparece debajo del botón, esto mandará una petición al autor del anuncio siempre y cuando dispongas de puntos necesarios.</item>
+        <item>En cualquier pestaña principal aparece un icono de \'+\' en la esquina inferior derecha, púlsalo y se abrirá una pantalla nueva con una serie de campos a rellenar, una vez que hayas terminado pulsa el botón inferior y tu anuncio será publicado y estará disponible para todos los usuarios.</item>
+        <item>Haz click en los 3 puntos de la esquina superior derecha, luego en \'Editar mis datos\', se abrirá una pantalla con una serie de campos y con tus datos actuales, sólo es necesario que modifiques aquel que te interesa, sólo se actualizarán los campos que hayan sido editados.</item>
+        <item>En la pestaña de perfil aparecen tus anuncios, haz click en el que quieras editar y se abrirá una pantalla con los datos del anuncio, haz de nuevo click sobre el campo que deseas modificar, introduce el nuevo valor y haz click en el botón.</item>
+        <item>En la pestaña de perfil dispones de un botón TRUEQES, púlsalo y se abrirá otra pantalla con dos pestañas, en la pestaña de solicitantes aparecerán los usuarios que hayan solicitado tus anuncios junto a los datos de este, además hay dos bototnes para rechazar o aceptar dichas solicitudes.</item>
+        <item>En la pestaña de perfil dispones de un botón TRUEQES, púlsalo y se abrirá otra pantalla con dos pestañas, en la pestaña de solicitudes aparecen los anuncios que has solicitado a otros usuarios y el estado en el que están, si pendientes, rechazados o aceptados.</item>
     </string-array>
 </resources>

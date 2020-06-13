@@ -35,12 +35,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SqlThreadMod sqlThreadMod;
+        SqlThreadClose sqlThreadClose;
         String cad;
         TextView edUser, edPass;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         try {
+            if (op) {
+                try {
+                    sqlThreadClose = new SqlThreadClose();
+                    sqlThreadClose.start();
+                    sqlThreadClose.join();
+                } catch (InterruptedException ie) {
+                    System.err.println(ie.getMessage());
+                }
+            }
             sqlThreadMod = new SqlThreadMod();
             sqlThreadMod.start();
             sqlThreadMod.join();
@@ -51,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 edPass = findViewById(R.id.edContras);
                 edUser.setText(cad.substring(0, cad.indexOf(";")));
                 edPass.setText(cad.substring(cad.indexOf(";") + 1));
+                op = true;
             } catch (FileNotFoundException fnfe) {
                 System.err.println(fnfe.getMessage());
             } catch (EOFException eofe) {
@@ -80,11 +91,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             } else {
-                creaDialogosError("Se ha producido un error");
+                creaDialogosError(getString(R.string.error_dialogo));
             }
         } catch (InterruptedException ie) {
             System.err.println(ie.getMessage());
-            creaDialogosError("Se ha producido un error");
+            creaDialogosError(getString(R.string.error_dialogo));
         }
     }
 
@@ -188,12 +199,12 @@ public class MainActivity extends AppCompatActivity {
                 if (Sesion.getResultados()[1]) {
                     exito = true;
                     if (!Sesion.getResultados()[2]) {
-                        txtEmail.setError("E-mail no válido");
+                        txtEmail.setError(getString(R.string.email_error));
                         txtInputEmail.setErrorEnabled(true);
                         exito = false;
                     }
                     if (!Sesion.getResultados()[3]) {
-                        txtContras.setError("Contraseña no válida.");
+                        txtContras.setError(getString(R.string.pass_error));
                         txtInputContras.setErrorEnabled(true);
                         exito = false;
                     }
@@ -217,19 +228,19 @@ public class MainActivity extends AppCompatActivity {
                                 System.err.println(ioe.getMessage());
                             }
                         } else {
-                            Toast.makeText(this, "El usuario o la contraseña introducida no es correcta", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, R.string.incorrect_error_ini, Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
-                    creaDialogosError("Se ha producido un error");
+                    creaDialogosError(getString(R.string.error_dialogo));
                 }
             } else {
-                creaDialogosError("Ha introducido varias veces las credenciales de forma incorrecta, espere un poco y vuélvalas a introducir");
+                creaDialogosError(getString(R.string.variosintentos_error_ini));
             }
             btnIniSes.setEnabled(true);
         } catch (InterruptedException ie) {
             System.err.println(ie.getMessage());
-            creaDialogosError("Se ha producido un error");
+            creaDialogosError(getString(R.string.error_dialogo));
         }
     }
 
